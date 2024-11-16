@@ -1,0 +1,62 @@
+.backup-container {
+  text-align: center; /* テキストを中央揃え */
+  padding: 50px 20px; /* 上下に50px、左右に20pxの余白 */
+  background-color: #f9f9f9; /* 背景色を薄い灰色に設定 */
+}
+
+.backup-title {
+  font-size: 2.5rem; /* タイトルのフォントサイズ */
+  color: #333; /* タイトルの文字色 */
+  margin-bottom: 10px; /* 下に余白 */
+}
+
+.backup-description {
+  font-size: 1.0rem; /* サブタイトルのフォントサイズ */
+  color: #555; /* サブタイトルの文字色 */
+  margin-bottom: 30px; /* 下に余白 */
+}
+
+.backup-cards {
+  display: flex; /* カードを横並びに配置 */
+  justify-content: center; /* カードを中央揃え */
+  gap: 20px; /* カード間のスペース */
+  flex-wrap: wrap; /* 小さい画面では折り返す */
+}
+
+.card {
+  background-color: #fff; /* カードの背景色 */
+  border-radius: 10px; /* 角を丸める */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
+  padding: 20px; /* 内側の余白 */
+  text-align: center; /* テキストを中央揃え */
+  max-width: 300px; /* カードの最大幅 */
+  flex: 1; /* カードのサイズを均等に */
+  min-width: 250px; /* カードの最小幅 */
+}
+
+.card-icon {
+  font-size: 2.5rem; /* アイコンのサイズ */
+  margin-bottom: 15px; /* 下に余白 */
+  color: #4caf50; /* アイコンの色 */
+}
+
+.card-title {
+  font-size: 1.5rem; /* タイトルのフォントサイズ */
+  color: #333; /* タイトルの文字色 */
+  margin-bottom: 10px; /* 下に余白 */
+}
+
+.card-description {
+  font-size: 1rem; /* 説明文のフォントサイズ */
+  color: #666; /* 説明文の文字色 */
+}
+
+
+.icon-image {
+    max-width: 80px; /* 画像の最大幅を設定 */
+    max-height: 80px; /* 画像の最大高さを設定 */
+    margin: 0 auto; /* 中央揃え */
+    display: block; /* ブロック要素として扱う */
+    object-fit: contain; /* アスペクト比を保持しながら収める */
+  }
+  
