@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+.App{
+  width: 100%;
+  height: 100vh;
+  font-size: 18px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header{
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* ↓背景 */
+  background-color: chartreuse;  
   color: white;
+  /* position: fixed; */
+  width: 100%;
+  z-index: 10;
 }
 
-.App-link {
-  color: #61dafb;
+header .logo h3 {
+  font-size: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 全navだね */
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s;
+}
+
+/* ホバーしたら */
+nav ul li a:hover {
+  color: black;
 }
