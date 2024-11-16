@@ -1,0 +1,56 @@
+.privacy-root {
+  max-width: 800px;
+  margin: 20px auto; /* コンテンツを中央揃え */
+  padding: 20px;
+  background: #f9f9f9; /* 背景色を薄い灰色に */
+  border-radius: 8px; /* 角を丸く */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影を追加 */
+  font-family: Arial, sans-serif; /* 読みやすいフォント */
+  line-height: 1.8;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333333; /* 見出しの濃い灰色 */
+  text-align: center; /* 中央揃え */
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #444444; /* 濃いめの灰色 */
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555555; /* 標準的な灰色 */
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 20px; /* リストの左余白 */
+  margin-bottom: 20px;
+}
+
+ul li {
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.5;
+}
+
+.mail a {
+  color: #007bff; /* リンクを青色に */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mail a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* ホバー時に濃い青 */
+}
+
+section {
+  margin-bottom: 30px; /* 各セクションの間隔を広げる */
+}
