@@ -1,16 +1,13 @@
 {
   "files": {
-    "main.css": "/neko/static/css/main.f855e6bc.css",
-    "main.js": "/neko/static/js/main.73c9f26e.js",
-    "static/js/453.04ecdf42.chunk.js": "/neko/static/js/453.04ecdf42.chunk.js",
-    "static/media/logo.svg": "/neko/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/neko/static/css/main.4b8696d6.css",
+    "main.js": "/neko/static/js/main.a7ae1cab.js",
     "index.html": "/neko/index.html",
-    "main.f855e6bc.css.map": "/neko/static/css/main.f855e6bc.css.map",
-    "main.73c9f26e.js.map": "/neko/static/js/main.73c9f26e.js.map",
-    "453.04ecdf42.chunk.js.map": "/neko/static/js/453.04ecdf42.chunk.js.map"
+    "main.4b8696d6.css.map": "/neko/static/css/main.4b8696d6.css.map",
+    "main.a7ae1cab.js.map": "/neko/static/js/main.a7ae1cab.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.73c9f26e.js"
+    "static/css/main.4b8696d6.css",
+    "static/js/main.a7ae1cab.js"
   ]
 }
