@@ -12,7 +12,7 @@ export default function Footer() {
           <img src={logo} alt="Ic ロゴ" />
 
           <h5>@2024 company</h5>
-          <Link to="/Privacy"><h4>個人情報保護方針について</h4></Link>
+          <Link to="/privacy"><h4>個人情報保護方針について</h4></Link>
 
           {/* ソーシャルアイコン */}
           {/* <div className="social-icons">
