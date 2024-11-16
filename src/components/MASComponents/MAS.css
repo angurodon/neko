@@ -1,0 +1,74 @@
+.msa-container {
+    position: relative;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-image: url('../../assets/MAS.png'); /* 背景画像を設定 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+  }
+  
+  /* 背景の白色オーバーレイを追加 */
+  .msa-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
+    z-index: 1;
+  }
+  
+  .msa-content {
+    position: relative;
+    z-index: 2; /* 背景よりも上に配置 */
+  }
+  
+  .msa-title {
+    font-size: 2rem;
+    color: #215126;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .msa-subtitle {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .msa-description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  .msa-services {
+    margin-top: 20px;
+  }
+  
+  .msa-service {
+    margin-bottom: 30px;
+  }
+  
+  .msa-service-title {
+    font-size: 1.2rem;
+    color: #215126;
+    margin-bottom: 10px;
+  }
+  
+  .msa-service-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  

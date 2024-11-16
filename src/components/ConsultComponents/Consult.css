@@ -1,0 +1,48 @@
+/* 全体背景用のスタイル */
+.consult-background {
+    background-color: #f5f7fa; /* 背景を薄いグレーに */
+    min-height: 40vh; /* 全画面をカバーするために高さを設定 */
+    padding: 20px; /* 内容に余裕を持たせるために余白を追加 */
+}
+
+.consult-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    background-color: #f5f7fa; /* 背景を薄いグレーに */
+    color: #333;
+    text-align: center;
+  }
+
+.consult-top{
+    background-color: #f5f7fa; /* 背景を薄いグレーに */
+}
+
+
+.consult-top h2{
+        font-size: 26px;
+        margin-top: 20px; /* 上に20pxの余白を追加して文字を下に移動 */
+        margin-bottom: 0px;
+        color: #5fc061; /* 色を指定 */
+        text-align: left ;
+        margin-left: 10%; /* 左側に20pxの余白を追加して右に調整 */
+}
+
+  
+  /* タイトル */
+  .consult-line h1 {
+    font-size: 66px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #cbcbcb; /* 色を指定 */
+    letter-spacing: 10px;
+}
+
+
+  /* 説明文 */
+p {
+    font-size: 28px;
+    color: #555;
+}

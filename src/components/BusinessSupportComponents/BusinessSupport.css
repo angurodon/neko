@@ -1,0 +1,74 @@
+.business-support-container {
+  position: relative;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
+  background-image: url('../../assets/backup_ec.png'); /* 背景画像を設定 */
+  background-size: cover; /* 背景をカバー */
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+/* 背景の白色オーバーレイを追加 */
+.business-support-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
+  z-index: 1;
+}
+
+.business-support-content {
+  position: relative;
+  z-index: 2; /* 背景よりも上に配置 */
+  text-align: center;
+}
+
+.business-support-title {
+  font-size: 2rem;
+  color: #215126;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.business-support-description {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.business-support-points {
+  list-style-type: none;
+  padding: 20px;
+  text-align: left;
+}
+
+.business-support-points li {
+  font-size: 1.2rem;
+  color: #000000;
+  line-height: 1.9;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.business-support-points li::before {
+  content: '✔'; /* リストアイコン */
+  font-size: 1.2rem;
+  color: #137b1e;
+  margin-right: 10px;
+}
+
+.business-support-points li:last-child {
+  margin-bottom: 0;
+}

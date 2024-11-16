@@ -4,7 +4,7 @@
   align-items: center; /* 垂直方向を中央揃え */
   padding: 20px; /* 外側の余白を追加 */
   min-height: 60vh; /* 画面全体の高さを確保 */
-  background-color: rgb(224, 236, 242); /* 背景色を設定 */
+  background-color: #f5f7fa; /* 背景を薄いグレーに */
   box-sizing: border-box; /* パディングを含むサイズ設定 */
 }
 
