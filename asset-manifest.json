@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/neko/static/css/main.4b8696d6.css",
-    "main.js": "/neko/static/js/main.a7ae1cab.js",
+    "main.css": "/neko/static/css/main.b627d13a.css",
+    "main.js": "/neko/static/js/main.50d57229.js",
+    "static/media/Ic-Growth_white_2.png": "/neko/static/media/Ic-Growth_white_2.8efad86457af85c5f256.png",
+    "static/media/logo_side.png": "/neko/static/media/logo_side.ddfa3f8900b0c2824c93.png",
     "index.html": "/neko/index.html",
-    "main.4b8696d6.css.map": "/neko/static/css/main.4b8696d6.css.map",
-    "main.a7ae1cab.js.map": "/neko/static/js/main.a7ae1cab.js.map"
+    "main.b627d13a.css.map": "/neko/static/css/main.b627d13a.css.map",
+    "main.50d57229.js.map": "/neko/static/js/main.50d57229.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b8696d6.css",
-    "static/js/main.a7ae1cab.js"
+    "static/css/main.b627d13a.css",
+    "static/js/main.50d57229.js"
   ]
 }
