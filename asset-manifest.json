@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/neko/static/css/main.1b47820d.css",
-    "main.js": "/neko/static/js/main.3b6099ad.js",
+    "main.css": "/neko/static/css/main.128743df.css",
+    "main.js": "/neko/static/js/main.76f0c1d3.js",
+    "static/media/backup_system.png": "/neko/static/media/backup_system.0bc753d9d98710ba56d7.png",
+    "static/media/MAS.png": "/neko/static/media/MAS.894b17edc198a8932f34.png",
+    "static/media/Ic-Growth_color_1.png": "/neko/static/media/Ic-Growth_color_1.c022565e3a802a995d17.png",
+    "static/media/backup.png": "/neko/static/media/backup.10fe5ed5ca3a2289f899.png",
     "static/media/Ic-Growth_white_2.png": "/neko/static/media/Ic-Growth_white_2.8efad86457af85c5f256.png",
     "static/media/logo_side.png": "/neko/static/media/logo_side.ddfa3f8900b0c2824c93.png",
     "index.html": "/neko/index.html",
-    "main.1b47820d.css.map": "/neko/static/css/main.1b47820d.css.map",
-    "main.3b6099ad.js.map": "/neko/static/js/main.3b6099ad.js.map"
+    "main.128743df.css.map": "/neko/static/css/main.128743df.css.map",
+    "main.76f0c1d3.js.map": "/neko/static/js/main.76f0c1d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b47820d.css",
-    "static/js/main.3b6099ad.js"
+    "static/css/main.128743df.css",
+    "static/js/main.76f0c1d3.js"
   ]
 }
