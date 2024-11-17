@@ -1,320 +1,159 @@
-.business-support-container {
-    position: relative;
-    padding: 90px;
-    max-width: 800px;
-    margin: 100px auto; /* セクション間の余白を追加 */
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
-    background-image: url('../../assets/backup_ec.png'); /* 背景画像を設定 */
-    background-size: cover; /* 背景をカバー */
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: hidden;
+/* フェードインアニメーション */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
-  /* 背景の白色オーバーレイを追加 */
-  .business-support-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
-    z-index: 1;
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  .business-support-content {
-    position: relative;
-    z-index: 2; /* 背景よりも上に配置 */
-    text-align: center;
-  }
-  
-  .business-support-title {
-    font-size: 2rem;
-    color: #215126;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .business-support-description {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    text-align: left;
-    font-size: 1.1rem;
-  }
-  
-  .business-support-points {
-    list-style-type: none;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .business-support-points li {
-    font-size: 1.2rem;
-    color: #000000;
-    line-height: 1.9;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .business-support-points li::before {
-    content: '✔'; /* リストアイコン */
-    font-size: 1.2rem;
-    color: #137b1e;
-    margin-right: 10px;
-  }
-  
-  .business-support-points li:last-child {
-    margin-bottom: 0;
-  }
-
-  
-  .system-support-container {
-    position: relative;
-    padding: 90px;
-    max-width: 800px;
-    margin: 100px auto; /* セクション間の余白を追加 */
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
-    background-image: url('../../assets/backup_system.png'); /* 背景画像を設定 */
-    background-size: cover; /* 背景をカバー */
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: hidden;
 }
-  
-  /* 背景の白色オーバーレイを追加 */
-  .system-support-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
-    z-index: 1;
-  }
-  
-  .system-support-content {
-    position: relative;
-    z-index: 2; /* 背景よりも上に配置 */
-    text-align: center;
-  }
-  
-  .system-support-title {
-    font-size: 2rem;
-    color: #215126;
-    margin-bottom: 20px;
-  }
-  
-  .system-support-description {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    text-align: left;
-  }
-  .system-support-description p{
-    color: #000000;
-    font-size: larger;
+
+.business-support-container,
+.system-support-container,
+.msa-support-container {
+  position: relative;
+  padding: 60px 30px; /* パディングを減らして余白を均等に */
+  max-width: 800px; /* 横幅を800pxに統一 */
+  margin: 50px auto;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out; /* フェードインアニメーション */
+}
+
+/* 背景画像を設定 */
+.business-support-container {
+  background-image: url('../../assets/backup_ec.png');  
+  background-size: 80%; /* 背景画像を少し小さく */
+}
+
+.system-support-container {
+  background-image: url('../../assets/backup_system.png');
+  background-size: 80%; /* 背景画像を少し小さく */
+}
+
+.msa-support-container {
+  background-image: url('../../assets/MAS.png');
+  background-size: contain; /* 背景画像を中央に収める */
+  background-position: center center; /* 画像を中央に配置 */
+  background-size: 80%; /* 背景画像を少し小さく */
+}
+
+/* 背景の白色オーバーレイを薄く調整 */
+.business-support-container::before,
+.system-support-container::before,
+.msa-support-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 253, 253, 0.85); /* 透明度を上げて背景画像をさらに薄く見せる */
+  z-index: 1;
+}
+
+.business-support-content,
+.system-support-content,
+.msa-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px; /* コンテンツ部分に余白を追加 */
+}
+
+/* タイトルに装飾を追加 */
+.business-support-title,
+.system-support-title,
+.msa-title {
+  font-size: 1.8rem; /* 少し小さくして調整 */
+  color: #215126;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.business-support-title::after,
+.system-support-title::after,
+.msa-title::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: #137b1e;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+
+.business-support-description,
+.system-support-description,
+.msa-description {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-align: justify; /* テキストを左右揃えに */
+  font-size: 1rem; /* 説明文のフォントサイズを調整 */
+}
+
+/* モバイル版（480px以下）用スタイル */
+@media (max-width: 480px) {
+  .business-support-container,
+  .system-support-container,
+  .msa-support-container {
+    padding: 20px 10px; /* 上下左右の余白を減らして画面に収める */
+    margin: 30px auto;
+    background-size: contain;
+    background-position: center top;
   }
 
-  .system-support-description strong{
-    color: #0c4415;
-  }
-  
-
-  .system-support-points {
-
-    list-style-type: none;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .system-support-points li {
-    font-size: 1.2rem;
-    color: #000000;
-    line-height: 1.9;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .system-support-points li::before {
-    content: '✔'; /* リストアイコン */
-    font-size: 1.2rem;
-    color: #137b1e;
-    margin-right: 10px;
-  }
-  
-  .system-support-points li:last-child {
-    margin-bottom: 0;
-  }
-  
-
-  .msa-container {
-    position: relative;
-    padding: 90px;
-    max-width: 800px;
-    margin: 100px auto; /* セクション間の余白を追加 */
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
-    background-image: url('../../assets/MAS.png'); /* 背景画像を設定 */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: hidden;
-  }
-  
   .msa-content {
-    position: relative;
-    z-index: 2; /* 背景よりも上に配置 */
-    line-height: 2; /* 行間を広げる */
-    font-size: 1.2rem; /* フォントサイズを大きくする */
-    text-align: justify; /* テキストを左右揃えに変更 */
+    background: rgba(255, 255, 255, 0.7); /* 透明度を少し下げて背景画像を見えやすくする */
+    padding: 15px;
+    border-radius: 10px;
   }
-  
+
+  .business-support-title,
+  .system-support-title,
   .msa-title {
-    font-size: 2.4rem; /* タイトルを少し大きく */
-    color: #215126;
-    margin-bottom: 30px; /* タイトル下の余白を増やす */
-    text-align: center;
+    font-size: 1.4rem; /* タイトルのフォントサイズを縮小 */
   }
-  
-  .msa-subtitle {
-    font-size: 1.8rem; /* サブタイトルを少し大きく */
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
+
+  .business-support-description,
+  .system-support-description,
   .msa-description {
-    font-size: 1.2rem; /* 説明文を少し大きく */
-    line-height: 1.8; /* 行間を少し広げる */
-    margin-bottom: 40px; /* 説明文下の余白を増やす */
-    color: #333;
-    text-align: justify; /* テキストを左右揃え */
+    font-size: 0.9rem; /* 説明文のフォントサイズを縮小 */
+    line-height: 1.6; /* 行間を調整して読みやすく */
   }
-  
-  .msa-services {
-    margin-top: 30px; /* セクションの余白を増やす */
-  }
-  
-  .msa-service {
-    margin-bottom: 40px; /* 各サービス間の余白を増やす */
-  }
-  
-  .msa-service-title {
-    font-size: 1.6rem; /* サービスタイトルを大きく */
-    color: #215126;
-    margin-bottom: 20px;
-  }
-  
-  .msa-service-description {
-    font-size: 1.2rem; /* サービス説明のフォントサイズを大きく */
-    line-height: 1.9; /* 行間を広げる */
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .backup-container {
-    text-align: center; /* テキストを中央揃え */
-    padding: 50px 20px; /* 上下に50px、左右に20pxの余白 */
-    background-color: #ffffff; /* 背景色を薄い灰色に設定 */
-  }
-  
-  .backup-title {
-    font-size: 2.5rem; /* タイトルのフォントサイズ */
-    color: #215126; /* タイトルの文字色 */
-    margin-bottom: 10px; /* 下に余白 */
-  }
-  
-  .backup-description {
-    font-size: 1.0rem; /* サブタイトルのフォントサイズ */
-    color: #555; /* サブタイトルの文字色 */
-    margin-bottom: 30px; /* 下に余白 */
-  }
-  
-  .backup-cards {
-    display: flex; /* カードを横並びに配置 */
-    justify-content: center; /* カードを中央揃え */
-    gap: 150px; /* カード間のスペースを大きく */
-    flex-wrap: wrap; /* 小さい画面では折り返す */
-    padding: 50px;
-  }
-  
-  .card {
-    background-color: #fff; /* カードの背景色 */
-    border-radius: 10px; /* 角を丸める */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
-    padding: 20px; /* 内側の余白 */
-    text-align: center; /* テキストを中央揃え */
-    max-width: 300px; /* カードの最大幅 */
-    max-height: 300px;
-    flex: 1; /* カードのサイズを均等に */
-    min-width: 250px; /* カードの最小幅 */
-  }
-  
-  .card-icon {
-    font-size: 2.5rem; /* アイコンのサイズ */
-    margin-bottom: 15px; /* 下に余白 */
-    color: #4caf50; /* アイコンの色 */
-  }
-  
-  .card-title {
-    font-size: 1.5rem; /* タイトルのフォントサイズ */
-    color: #333; /* タイトルの文字色 */
-    margin-bottom: 10px; /* 下に余白 */
-  }
-  
-  .MAS{
-      font-size: 1.4rem; /* タイトルのフォントサイズ */
-      color: #333; /* タイトルの文字色 */
-      margin-bottom: 20px; /* 下に余白 */
-  }
-  
-  .card-description {
-    font-size: 1rem; /* 説明文のフォントサイズ */
-    color: #666; /* 説明文の文字色 */
-  }
-  
-  
-  .icon-image {
-      max-width: 100px; /* 画像の最大幅を設定 */
-      max-height: 100px; /* 画像の最大高さを設定 */
-      margin: 0 auto; /* 中央揃え */
-      display: block; /* ブロック要素として扱う */
-      object-fit: contain; /* アスペクト比を保持しながら収める */
-    }
-  
-  
-    .card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションの設定 */
-    }
-    
-    .card:hover {
-      transform: translateY(-10px); /* ホバー時に浮き上がる */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
-    }
-    
-    .card-icon {
-      cursor: pointer; /* カーソルをポインターに変更 */
-      transition: color 0.3s ease; /* 色のアニメーション */
-    }
-    
-    .card-icon:hover {
-      color: #2d8659; /* ホバー時に色を変更 */
-    }
-    
-    .card-link {
-      text-decoration: none; /* 下線を削除 */
-      color: inherit; /* テキストの色を親に継承 */
-    }
-    
+}
+
+.msa-service-description {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: left; /* テキストを左揃えに変更 */
+  font-size: 1rem;
+}
+
+.msa-service-title {
+  text-align: center; /* タイトル部分は中央揃えのまま */
+}
+/* 初期状態で透明にしておく */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 表示されたときに適用されるクラス */
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
