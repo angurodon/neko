@@ -54,3 +54,37 @@ ul li {
 section {
   margin-bottom: 30px; /* 各セクションの間隔を広げる */
 }
+
+/* モバイル対応のスタイル */
+@media (max-width: 480px) {
+  .privacy-root {
+    max-width: 100%;
+    margin: 10px; /* 余白を縮小 */
+    padding: 15px; /* パディングを縮小 */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* フォントサイズを縮小 */
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 1.3rem; /* フォントサイズを縮小 */
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  p, ul li {
+    font-size: 0.9rem; /* フォントサイズを縮小 */
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding-left: 15px; /* リストの左余白を縮小 */
+    margin-bottom: 15px;
+  }
+
+  section {
+    margin-bottom: 20px; /* セクション間の余白を縮小 */
+  }
+}
