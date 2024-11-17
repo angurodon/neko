@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/neko/static/css/main.4d03ae58.css",
-    "main.js": "/neko/static/js/main.d2c7ae9c.js",
+    "main.css": "/neko/static/css/main.c56a90f5.css",
+    "main.js": "/neko/static/js/main.e6a0550f.js",
     "static/media/backup_ec.png": "/neko/static/media/backup_ec.ffb9202a592b6dc33d5a.png",
     "static/media/backup_system.png": "/neko/static/media/backup_system.0bc753d9d98710ba56d7.png",
     "static/media/MAS.png": "/neko/static/media/MAS.894b17edc198a8932f34.png",
@@ -9,11 +9,11 @@
     "static/media/Ic-Growth_white_2.png": "/neko/static/media/Ic-Growth_white_2.8efad86457af85c5f256.png",
     "static/media/logo_side.png": "/neko/static/media/logo_side.ddfa3f8900b0c2824c93.png",
     "index.html": "/neko/index.html",
-    "main.4d03ae58.css.map": "/neko/static/css/main.4d03ae58.css.map",
-    "main.d2c7ae9c.js.map": "/neko/static/js/main.d2c7ae9c.js.map"
+    "main.c56a90f5.css.map": "/neko/static/css/main.c56a90f5.css.map",
+    "main.e6a0550f.js.map": "/neko/static/js/main.e6a0550f.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d03ae58.css",
-    "static/js/main.d2c7ae9c.js"
+    "static/css/main.c56a90f5.css",
+    "static/js/main.e6a0550f.js"
   ]
 }
