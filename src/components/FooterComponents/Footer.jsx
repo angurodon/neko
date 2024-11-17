@@ -39,7 +39,7 @@ export default function Footer() {
           <h4>サービス</h4>
           <ul>
             <li><Link to="/policy">利用規約</Link></li>
-            <li><Link to="/guidelines">ガイドラインについて</Link></li>
+            <li><Link to="/guidelines">ガイドライン</Link></li>
             <li><Link to="/overview">事業概要</Link></li>
             <li><Link to="#">-</Link></li>
           </ul>

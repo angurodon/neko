@@ -8,11 +8,11 @@ const SectionComponent1 = () => {
       <div className="content-section">
 
         <p>
-          個人と企業の成長に貢献します！<br />
+          <strong>個人と企業の成長に貢献します！</strong><br />
           Contribute to the growth of individuals and companies
         </p>
         <p>
-          <strong>ミッション:</strong> 日本の近未来における厳しい環境化であっても、持続的成長を遂げるために、
+          日本の近未来における厳しい環境化であっても、持続的成長を遂げるために、
           有限である経営資源（ヒト、モノ、カネ、時間）活用の最適化を図ることを使命とします。<br></br>
           我々はこの使命を「会計をエネルギーに変換すること」で実現します。「Accounting Transformation」「AX」の実現を目指します。
         </p>
