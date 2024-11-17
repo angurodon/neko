@@ -1,93 +1,145 @@
 .backup-container {
-  text-align: center; /* テキストを中央揃え */
-  padding: 50px 20px; /* 上下に50px、左右に20pxの余白 */
-  background-color: #ffffff; /* 背景色を薄い灰色に設定 */
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffffff;
 }
 
 .backup-title {
-  font-size: 2.5rem; /* タイトルのフォントサイズ */
-  color: #215126; /* タイトルの文字色 */
-  margin-bottom: 10px; /* 下に余白 */
+  font-size: 2.5rem;
+  color: #215126;
+  margin-bottom: 10px;
 }
 
 .backup-description {
-  font-size: 1.0rem; /* サブタイトルのフォントサイズ */
-  color: #555; /* サブタイトルの文字色 */
-  margin-bottom: 30px; /* 下に余白 */
+  font-size: 1.0rem;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .backup-cards {
-  display: flex; /* カードを横並びに配置 */
-  justify-content: center; /* カードを中央揃え */
-  gap: 150px; /* カード間のスペースを大きく */
-  flex-wrap: wrap; /* 小さい画面では折り返す */
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  flex-wrap: wrap;
 }
 
 .card {
-  background-color: #fff; /* カードの背景色 */
-  border-radius: 10px; /* 角を丸める */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
-  padding: 20px; /* 内側の余白 */
-  text-align: center; /* テキストを中央揃え */
-  max-width: 300px; /* カードの最大幅 */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
   max-height: 300px;
-  flex: 1; /* カードのサイズを均等に */
-  min-width: 250px; /* カードの最小幅 */
+  flex: 1;
+  min-width: 250px;
 }
 
 .card-icon {
-  font-size: 2.5rem; /* アイコンのサイズ */
-  margin-bottom: 15px; /* 下に余白 */
-  color: #4caf50; /* アイコンの色 */
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #4caf50;
 }
 
 .card-title {
-  font-size: 1.5rem; /* タイトルのフォントサイズ */
-  color: #333; /* タイトルの文字色 */
-  margin-bottom: 10px; /* 下に余白 */
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.MAS{
-    font-size: 1.4rem; /* タイトルのフォントサイズ */
-    color: #333; /* タイトルの文字色 */
-    margin-bottom: 20px; /* 下に余白 */
+.MAS {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .card-description {
-  font-size: 1rem; /* 説明文のフォントサイズ */
-  color: #666; /* 説明文の文字色 */
+  font-size: 1rem;
+  color: #666;
 }
 
-
 .icon-image {
-    max-width: 100px; /* 画像の最大幅を設定 */
-    max-height: 100px; /* 画像の最大高さを設定 */
-    margin: 0 auto; /* 中央揃え */
-    display: block; /* ブロック要素として扱う */
-    object-fit: contain; /* アスペクト比を保持しながら収める */
+  max-width: 100px;
+  max-height: 100px;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.card-icon:hover {
+  color: #2d8659;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================= */
+/* モバイル版（480px以下）用スタイル */
+/* ============================= */
+@media (max-width: 480px) {
+  .backup-container {
+    padding: 30px 10px; /* 上下の余白を少なくしてスペースを確保 */
   }
 
+  .backup-title {
+    font-size: 2rem; /* タイトルのフォントサイズを小さく調整 */
+    margin-bottom: 15px; /* マージンを調整 */
+  }
+
+  .backup-description {
+    font-size: 0.9rem; /* 説明のフォントサイズを少し縮小 */
+    margin-bottom: 20px; /* マージンを小さく */
+  }
+
+  .backup-cards {
+    gap: 20px; /* カード間のスペースを小さく */
+    flex-direction: column; /* モバイルでは縦に並べる */
+    align-items: center; /* カードを中央揃え */
+  }
 
   .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションの設定 */
+    max-width: 100%; /* カードの幅を100%にして全体を使う */
+    padding: 15px; /* パディングを縮小 */
+    margin-bottom: 20px; /* カードの間にスペースを追加 */
   }
-  
-  .card:hover {
-    transform: translateY(-10px); /* ホバー時に浮き上がる */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
+
+  .card-title {
+    font-size: 1.2rem; /* タイトルのフォントサイズを縮小 */
+    margin-bottom: 10px; /* マージンを縮小 */
   }
-  
+
+  .MAS {
+    font-size: 1.1rem; /* フォントサイズを縮小 */
+    margin-bottom: 15px; /* マージンを小さく */
+  }
+
   .card-icon {
-    cursor: pointer; /* カーソルをポインターに変更 */
-    transition: color 0.3s ease; /* 色のアニメーション */
+    font-size: 2rem; /* アイコンのサイズを少し小さく */
+    margin-bottom: 10px; /* マージンを縮小 */
   }
-  
-  .card-icon:hover {
-    color: #2d8659; /* ホバー時に色を変更 */
+
+  .card-description {
+    font-size: 0.9rem; /* 説明文のフォントサイズを少し縮小 */
   }
-  
-  .card-link {
-    text-decoration: none; /* 下線を削除 */
-    color: inherit; /* テキストの色を親に継承 */
+
+  .icon-image {
+    max-width: 80px; /* アイコンのサイズを縮小 */
+    max-height: 80px; /* アイコンのサイズを縮小 */
   }
-  
+}

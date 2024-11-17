@@ -48,7 +48,7 @@ const Company = () => {
           </tr>
 
           <tr>
-            <th><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />弊社サービス</th>
+            <th><br /><br /><br /><br /><br /><br /><br /><br />弊社サービス</th>
             <td>
               <strong>【経理システム導入支援】</strong><br />
               ・勤怠管理システム導入支援<br />

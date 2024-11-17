@@ -1,68 +1,104 @@
 /* 全体背景用のスタイル */
 .consult-background {
-    background-color: #f5f7fa; /* 背景を薄いグレーに */
-    min-height: 40vh; /* 全画面をカバーするために高さを設定 */
-    padding: 20px; /* 内容に余裕を持たせるために余白を追加 */
+  background-color: #f5f7fa;
+  min-height: 40vh;
+  padding: 20px;
 }
 
 .consult-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 20vh;
-    background-color: #f5f7fa; /* 背景を薄いグレーに */
-    color: #333;
-    text-align: center;
-  }
-
-.consult-top{
-    background-color: #f5f7fa; /* 背景を薄いグレーに */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  background-color: #f5f7fa;
+  color: #333;
+  text-align: center;
 }
 
-
-.consult-top h2{
-        font-size: 26px;
-        margin-top: 20px; /* 上に20pxの余白を追加して文字を下に移動 */
-        margin-bottom: 0px;
-        color: #5fc061; /* 色を指定 */
-        text-align: left ;
-        margin-left: 10%; /* 左側に20pxの余白を追加して右に調整 */
+.consult-top {
+  background-color: #f5f7fa;
 }
 
-  
-  /* タイトル */
-  .consult-line h1 {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #aecab9; /* 色を指定 */
-    letter-spacing: 10px;
+.consult-top h2 {
+  font-size: 26px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: #5fc061;
+  text-align: left;
+  margin-left: 10%;
+}
+
+/* タイトル */
+.consult-line h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #aecab9;
+  letter-spacing: 10px;
 }
 
 .consult-line h2 {
   font-size: 35px;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #a0b9aa; /* 色を指定 */
+  color: #a0b9aa;
   letter-spacing: 5px;
 }
 
 .mail a {
-  color: #aecab9 !important; /* 必ず指定した色を適用 */
-  text-decoration: none !important; /* 必ず下線を削除 */
+  color: #aecab9 !important;
+  text-decoration: none !important;
   font-weight: bold;
 }
 
 .mail a:visited {
-  color: #aecab9 !important; /* 訪問済みのリンクにも同じ色 */
+  color: #aecab9 !important;
 }
 
 .mail a:hover {
-  color: #89a892 !important; /* ホバー時に色を変更 */
-  text-decoration: underline !important; /* ホバー時に下線を表示 */
+  color: #89a892 !important;
+  text-decoration: underline !important;
 }
 
 .mail a:active {
-  color: #aecab9 !important; /* クリック中のリンクにも適用 */
+  color: #aecab9 !important;
+}
+
+/* ============================= */
+/* モバイル版（480px以下）用スタイル */
+/* ============================= */
+@media (max-width: 480px) {
+.consult-background {
+  padding: 15px; /* パディングを小さくしてスペースを節約 */
+  min-height: 30vh; /* 高さを調整 */
+}
+
+.consult-container {
+  padding: 10px; /* 余白を少なくしてコンテンツをまとめる */
+  min-height: auto; /* 高さ制限を解除 */
+}
+
+.consult-top h2 {
+  font-size: 20px; /* タイトルのフォントサイズを小さくして見やすく */
+  text-align: center; /* 中央揃えに変更 */
+  margin-left: 0; /* 左の余白を削除して全体を中央揃え */
+  margin-top: 15px; /* 上の余白を調整 */
+}
+
+.consult-line h1 {
+  font-size: 28px; /* フォントサイズを縮小 */
+  letter-spacing: 5px; /* 文字間隔を縮める */
+  margin-bottom: 10px; /* マージンを少し広げて視認性を確保 */
+}
+
+.consult-line h2 {
+  font-size: 24px; /* フォントサイズを小さくして見やすく */
+  letter-spacing: 3px; /* 文字間隔を調整 */
+  margin-bottom: 15px; /* マージンを少し広げる */
+}
+
+.mail a {
+  font-size: 0.9rem; /* フォントサイズを小さくして画面幅に合わせる */
+}
 }

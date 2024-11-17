@@ -1,55 +1,105 @@
 .company-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
-  }
-  
-  .furigana {
-    font-size: 0.8rem; /* フリガナのサイズを少し小さくする */
-    color: #666; /* フリガナを目立ちすぎない色に */
-    margin-left: 3px; /* 少しスペースを空ける */
-  }
-  .company-container h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #215126; /* タイトルの文字色 */
-    margin-bottom: 20px;
-  }
-  
-  .company-table {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .company-table th,
-  .company-table td {
-    padding: 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-    vertical-align: top;
-  }
-  
-  .company-table th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-    width: 20%;
-  }
-  
-  .company-table td {
-    width: 80%;
-  }
-  
-  .company-table a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .company-table a:hover {
-    text-decoration: underline;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.furigana {
+  font-size: 0.8rem;
+  color: #666;
+  margin-left: 3px;
+}
+
+.company-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #215126;
+  margin-bottom: 20px;
+}
+
+.company-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.company-table th,
+.company-table td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+}
+
+.company-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  width: 20%;
+}
+
+.company-table td {
+  width: 80%;
+}
+
+.company-table a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.company-table a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* モバイル版（480px以下）用スタイル */
+/* ============================= */
+@media (max-width: 480px) {
+  .company-container {
+      padding: 15px; /* パディングを少し減らす */
   }
 
-  
+  .company-container h1 {
+      font-size: 1.8rem; /* タイトルのフォントサイズを縮小 */
+      margin-bottom: 15px;
+  }
+
+  .furigana {
+      font-size: 0.7rem; /* フリガナのサイズを縮小 */
+      color: #999; /* 色をさらに目立たなくする */
+  }
+
+  .company-table {
+      width: 100%; /* テーブルの幅を画面幅に合わせる */
+      max-width: none; /* 最大幅を無効にする */
+      font-size: 0.9rem; /* テーブル全体のフォントサイズを縮小 */
+  }
+
+  .company-table th,
+  .company-table td {
+      padding: 10px; /* セルのパディングを縮小 */
+      font-size: 0.9rem; /* セルのフォントサイズを縮小 */
+  }
+
+  .company-table th {
+      width: 30%; /* モバイル画面では項目の幅を調整 */
+  }
+
+  .company-table td {
+      width: 70%;
+  }
+
+  .company-table th,
+  .company-table td {
+      display: block; /* セルをブロック表示に変更 */
+      width: 100%; /* 各セルの幅を100%に */
+      text-align: left; /* テキストを左揃え */
+  }
+
+  .company-table tr {
+      margin-bottom: 15px; /* 各行に余白を追加 */
+      display: block; /* 行全体をブロック表示にして縦に並べる */
+  }
+}
