@@ -10,17 +10,18 @@ const Header = () => {
         <img src={logo} alt="会社ロゴ" />
       </div>
 
-      <nav>
+      <nav className='nav'>
         <ul className='nav-list'>
+          <li></li>
           <li><Link to="/">ホーム</Link></li>
-          <li><Link to="/features">特徴</Link></li>
+          <li><Link to="/overview">事業概要</Link></li>
           <li><Link to="/community">コミュニティ</Link></li>
         </ul>
       </nav>
+        <div className='contact-btn'>
+          <a href="mailto:ic-growth-aoi@ic-gr.com" className="btn">お問い合わせ</a>
+        </div>
 
-      <div className='contact-btn'>
-        <a href="/contact" className="btn">お問い合わせ</a>
-      </div>
     </header>
   );
 }

@@ -8,13 +8,17 @@ import MAS from '../../assets/MAS.png';
 export default function Backup() {
   return (
     <div className="backup-container">
-      <h1 className="backup-title">事 業 概 要</h1>
+      <div>
+          <h1 className="backup-title" >
+             事 業 概 要
+          </h1>
+      </div>
       <p className="backup-description">
         我々は下記サービスを導入支援いたします
       </p>
       <div className="backup-cards">
         <div className="card">
-          <Link to="/system-support" className="card-link">
+          <Link to="/overview" className="card-link">
             <div className="card-icon">
               <img src={backup_system} alt="経理システムの導入支援" className="icon-image" />
             </div>
@@ -25,7 +29,7 @@ export default function Backup() {
           </Link>
         </div>
         <div className="card">
-          <Link to="/accounting-support" className="card-link">
+          <Link to="/overview" className="card-link">
             <div className="card-icon">
               <img src={backup_ec} alt="経理支援アイコン" className="icon-image" />
             </div>
@@ -36,7 +40,7 @@ export default function Backup() {
           </Link>
         </div>
         <div className="card">
-          <Link to="/management-advisory" className="card-link">
+          <Link to="/overview" className="card-link">
             <div className="card-icon">
               <img src={MAS} alt="MAS" className="icon-image" />
             </div>
