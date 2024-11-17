@@ -2,39 +2,31 @@
   display: flex;
   justify-content: space-between; /* 左右に要素を配置 */
   align-items: center; /* 垂直方向を中央揃え */
-  padding: 20px; /* 外側の余白を追加 */
-  min-height: 60vh; /* 画面全体の高さを確保 */
-  background-color: #f5f7fa; /* 背景を薄いグレーに */
+  padding: 40px; /* 外側の余白を追加 */
+  min-height: 80vh; /* 画面全体の高さを確保 */
+  background: linear-gradient(180deg, #f5f7fa, #e9ecef); /* 背景にグラデーションを追加 */
   box-sizing: border-box; /* パディングを含むサイズ設定 */
 }
 
 .content-section {
   flex: 1; /* 左側を適切な幅にする */
-  text-align: center; /* 中央揃え */
+  text-align: left; /* テキストを左揃え */
   padding: 20px; /* 内側の余白 */
 }
 
 .content-section h1 {
-  font-size: 2.5rem; /* 見出しのサイズ */
-  margin: 10px 0; /* 上下の余白 */
+  font-size: 3rem; /* 見出しのサイズを拡大 */
+  margin: 20px 0; /* 上下の余白を追加 */
   color: #333; /* テキストの色 */
 }
 
-.contact-button {
-  background-color: #28a745; /* ボタンの背景色 */
-  color: white; /* テキスト色 */
-  padding: 10px 20px; /* ボタンの余白 */
-  border: none; /* ボーダーを消す */
-  border-radius: 5px; /* 角を丸くする */
-  font-size: 1rem; /* フォントサイズ */
-  margin-top: 20px; /* 上部に余白 */
-  cursor: pointer; /* カーソルをポインタに変更 */
-  transition: background-color 0.3s ease; /* ホバー時のエフェクト */
+.content-section p {
+  font-size: 1.2rem; /* フォントサイズを調整 */
+  line-height: 1.8; /* 行間を広げて読みやすくする */
+  color: #555; /* テキストの色 */
+  margin-bottom: 20px; /* 段落間の余白 */
 }
 
-.contact-button:hover {
-  background-color: #218838; /* ホバー時の色 */
-}
 
 .logo-section {
   flex: 1; /* 右側を適切な幅にする */
@@ -47,7 +39,7 @@
 
 .logo-section img {
   max-width: 100%; /* ロゴ画像の最大幅 */
-  max-height: 200px; /* 最大高さ */
+  max-height: 250px; /* 最大高さ */
   object-fit: contain; /* 比率を保ちながら収める */
   margin-bottom: 10px; /* 下部に余白 */
 }
