@@ -3,7 +3,7 @@ import './MAS.css'; // CSSファイルをインポート
 
 export default function MAS() {
   return (
-    <div className="msa-container">
+  <div className="msa-container">
       <div className="msa-content">
         <h1 className="msa-title">経営支援</h1>
         <h2 className="msa-subtitle">ＭＡＳ（経営アドバイザリーサービス）</h2>
@@ -38,6 +38,6 @@ export default function MAS() {
           </div>
         </div>
       </div>
-    </div>
+  </div>
   );
 }

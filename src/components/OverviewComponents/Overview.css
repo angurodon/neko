@@ -1,0 +1,226 @@
+.business-support-container {
+    position: relative;
+    padding: 90px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
+    background-image: url('../../assets/backup_ec.png'); /* 背景画像を設定 */
+    background-size: cover; /* 背景をカバー */
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+  }
+  
+  /* 背景の白色オーバーレイを追加 */
+  .business-support-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
+    z-index: 1;
+  }
+  
+  .business-support-content {
+    position: relative;
+    z-index: 2; /* 背景よりも上に配置 */
+    text-align: center;
+  }
+  
+  .business-support-title {
+    font-size: 2rem;
+    color: #215126;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .business-support-description {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 1.1rem;
+  }
+  
+  .business-support-points {
+    list-style-type: none;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .business-support-points li {
+    font-size: 1.2rem;
+    color: #000000;
+    line-height: 1.9;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .business-support-points li::before {
+    content: '✔'; /* リストアイコン */
+    font-size: 1.2rem;
+    color: #137b1e;
+    margin-right: 10px;
+  }
+  
+  .business-support-points li:last-child {
+    margin-bottom: 0;
+  }
+
+  
+  .system-support-container {
+    position: relative;
+    padding: 90px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
+    background-image: url('../../assets/backup_system.png'); /* 背景画像を設定 */
+    background-size: cover; /* 背景をカバー */
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+  }
+  
+  /* 背景の白色オーバーレイを追加 */
+  .system-support-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白レイヤー */
+    z-index: 1;
+  }
+  
+  .system-support-content {
+    position: relative;
+    z-index: 2; /* 背景よりも上に配置 */
+    text-align: center;
+  }
+  
+  .system-support-title {
+    font-size: 2rem;
+    color: #215126;
+    margin-bottom: 20px;
+  }
+  
+  .system-support-description {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .system-support-description p{
+    color: #000000;
+    font-size: larger;
+  }
+
+  .system-support-description strong{
+    color: #0c4415;
+  }
+  
+
+  .system-support-points {
+
+    list-style-type: none;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .system-support-points li {
+    font-size: 1.2rem;
+    color: #000000;
+    line-height: 1.9;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .system-support-points li::before {
+    content: '✔'; /* リストアイコン */
+    font-size: 1.2rem;
+    color: #137b1e;
+    margin-right: 10px;
+  }
+  
+  .system-support-points li:last-child {
+    margin-bottom: 0;
+  }
+  
+
+  .msa-container {
+    position: relative;
+    padding: 90px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(95, 49, 49, 0.1);
+    background-image: url('../../assets/MAS.png'); /* 背景画像を設定 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+  }
+  
+  .msa-content {
+    position: relative;
+    z-index: 2; /* 背景よりも上に配置 */
+    line-height: 2; /* 行間を広げる */
+    font-size: 1.2rem; /* フォントサイズを大きくする */
+    text-align: justify; /* テキストを左右揃えに変更 */
+  }
+  
+  .msa-title {
+    font-size: 2.4rem; /* タイトルを少し大きく */
+    color: #215126;
+    margin-bottom: 30px; /* タイトル下の余白を増やす */
+    text-align: center;
+  }
+  
+  .msa-subtitle {
+    font-size: 1.8rem; /* サブタイトルを少し大きく */
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .msa-description {
+    font-size: 1.2rem; /* 説明文を少し大きく */
+    line-height: 1.8; /* 行間を少し広げる */
+    margin-bottom: 40px; /* 説明文下の余白を増やす */
+    color: #333;
+    text-align: justify; /* テキストを左右揃え */
+  }
+  
+  .msa-services {
+    margin-top: 30px; /* セクションの余白を増やす */
+  }
+  
+  .msa-service {
+    margin-bottom: 40px; /* 各サービス間の余白を増やす */
+  }
+  
+  .msa-service-title {
+    font-size: 1.6rem; /* サービスタイトルを大きく */
+    color: #215126;
+    margin-bottom: 20px;
+  }
+  
+  .msa-service-description {
+    font-size: 1.2rem; /* サービス説明のフォントサイズを大きく */
+    line-height: 1.9; /* 行間を広げる */
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
