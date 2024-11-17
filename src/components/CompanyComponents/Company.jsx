@@ -4,7 +4,7 @@ import './Company.css'; // CSSファイルのインポート
 const Company = () => {
   return (
     <div className="company-container">
-      <h1>会社概要</h1>
+      <h1>会 社 概 要</h1>
       <table className="company-table">
         <tbody>
         <tr>
