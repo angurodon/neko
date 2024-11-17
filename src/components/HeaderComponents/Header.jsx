@@ -15,7 +15,7 @@ const Header = () => {
           <li></li>
           <li><Link to="/">ホーム</Link></li>
           <li><Link to="/overview">事業概要</Link></li>
-          <li><Link to="/community">コミュニティ</Link></li>
+          <li><Link to="/company">会社概要</Link></li>
         </ul>
       </nav>
         <div className='contact-btn'>

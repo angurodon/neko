@@ -1,51 +1,92 @@
 .homepage-container {
   display: flex;
-  justify-content: space-between; /* 左右に要素を配置 */
-  align-items: center; /* 垂直方向を中央揃え */
-  padding: 40px; /* 外側の余白を追加 */
-  min-height: 80vh; /* 画面全体の高さを確保 */
-  background: linear-gradient(180deg, #f5f7fa, #e9ecef); /* 背景にグラデーションを追加 */
-  box-sizing: border-box; /* パディングを含むサイズ設定 */
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  min-height: 80vh;
+  background: linear-gradient(180deg, #f5f7fa, #e9ecef);
+  box-sizing: border-box;
+  opacity: 0; /* 初期状態は透明 */
+  animation: fadeIn 1.5s ease-in-out forwards; /* フェードインアニメーション */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* 透明から */
+    transform: translateY(20px); /* 少し下から */
+  }
+  to {
+    opacity: 1; /* 完全に表示 */
+    transform: translateY(0); /* 元の位置に */
+  }
 }
 
 .content-section {
-  flex: 1; /* 左側を適切な幅にする */
-  text-align: left; /* テキストを左揃え */
-  padding: 20px; /* 内側の余白 */
+  flex: 1;
+  text-align: left;
+  padding: 20px;
+  animation: slideInLeft 1.5s ease-in-out forwards;
 }
 
-.content-section h1 {
-  font-size: 3rem; /* 見出しのサイズを拡大 */
-  margin: 20px 0; /* 上下の余白を追加 */
-  color: #333; /* テキストの色 */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px); /* 左からスライド */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* 元の位置に */
+  }
 }
 
 .content-section p {
-  font-size: 1.2rem; /* フォントサイズを調整 */
-  line-height: 1.8; /* 行間を広げて読みやすくする */
-  color: #555; /* テキストの色 */
-  margin-bottom: 20px; /* 段落間の余白 */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInText 1.2s ease-in-out forwards;
+  animation-delay: 0.5s; /* 遅延を追加 */
 }
 
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .logo-section {
-  flex: 1; /* 右側を適切な幅にする */
-  display: flex; /* 内部を中央揃え */
-  flex-direction: column; /* 縦方向に並べる */
-  align-items: center; /* 中央揃え */
-  justify-content: center; /* 垂直方向も中央揃え */
-  padding: 20px; /* 内側の余白 */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: slideInRight 1.5s ease-in-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px); /* 右からスライド */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* 元の位置に */
+  }
 }
 
 .logo-section img {
-  max-width: 100%; /* ロゴ画像の最大幅 */
-  max-height: 250px; /* 最大高さ */
-  object-fit: contain; /* 比率を保ちながら収める */
-  margin-bottom: 10px; /* 下部に余白 */
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out; /* ホバー時のエフェクトを追加 */
 }
 
-.logo-section h2 {
-  font-size: 2rem; /* テキストのサイズ */
-  color: #333; /* テキスト色 */
-  margin-top: 10px; /* 上部に余白 */
+.logo-section img:hover {
+  transform: scale(1.1); /* ホバー時に拡大 */
 }

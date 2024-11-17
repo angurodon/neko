@@ -33,16 +33,36 @@
   
   /* タイトル */
   .consult-line h1 {
-    font-size: 66px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #cbcbcb; /* 色を指定 */
+    color: #aecab9; /* 色を指定 */
     letter-spacing: 10px;
 }
 
+.consult-line h2 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #a0b9aa; /* 色を指定 */
+  letter-spacing: 5px;
+}
 
-  /* 説明文 */
-p {
-    font-size: 28px;
-    color: #555;
+.mail a {
+  color: #aecab9 !important; /* 必ず指定した色を適用 */
+  text-decoration: none !important; /* 必ず下線を削除 */
+  font-weight: bold;
+}
+
+.mail a:visited {
+  color: #aecab9 !important; /* 訪問済みのリンクにも同じ色 */
+}
+
+.mail a:hover {
+  color: #89a892 !important; /* ホバー時に色を変更 */
+  text-decoration: underline !important; /* ホバー時に下線を表示 */
+}
+
+.mail a:active {
+  color: #aecab9 !important; /* クリック中のリンクにも適用 */
 }
