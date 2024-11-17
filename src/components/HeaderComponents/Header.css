@@ -1,108 +1,162 @@
-header{
+/* 共通スタイル */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 75px; /* ヘッダーの高さを固定する */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: white;  
-  color: white;
-  width: 100%;
-  z-index: 10;
+  padding: 10px 20px;
+}
+
+/* コンテンツ部分にヘッダーの高さ分のマージンを追加 */
+body {
+  margin-top: 100px; /* ヘッダーの高さと同じだけマージンを追加する */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 1001; /* ロゴがハンバーガーより上に表示されるように */
 }
 
 .logo img {
-  height: auto;
-  max-width: 70%;
+  height: 40px; /* ロゴのサイズを適切に調整 */
 }
 
-header .logo {
+/* サイドバーのデフォルトは非表示 */
+.nav-menu {
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease-in-out;
 }
 
-header .logo h3 {
-  font-size: 30px;
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  z-index: 999;
+  flex-direction: column;
+  padding-top: 50px;
 }
 
-nav {
-  margin-left: 30%;
+.nav-menu.open {
+  right: -50px; /* サイドバーをさらに左に50px移動 */
 }
 
 .nav-list {
-  display: flex;
   list-style: none;
-  gap: 20px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .nav-list li {
-  font-size: 16px;
-  margin-right: 30px;
+  margin: 20px 0;
 }
 
 .nav-list a {
   text-decoration: none;
   color: #333;
-  transition: color 0.3s;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.nav-list a:hover {
-  color: #007bff;
+.contact-btn {
+  margin-top: 30px;
 }
 
 .contact-btn .btn {
-  background-color: #28a745;
+  background-color: #4caf50;
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  margin-left: auto;
 }
 
-.contact-btn .btn:hover {
-  background-color: #218838;
+/* ハンバーガーメニューのアイコン */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1002; /* ロゴより上に表示 */
+  position: absolute; /* 位置を絶対指定 */
+  right: 40px; /* 右からの位置を調整 */
 }
 
-/* ============================= */
-/* モバイル版（480px以下）用スタイル */
-/* ============================= */
-@media (max-width: 480px) {
-  header {
-      flex-direction: column;
-      padding: 10px;
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+}
+
+/* 「×」アイコンのスタイル */
+.menu-icon .close-icon {
+  font-size: 1.8rem;
+  color: #333;
+  transition: all 0.4s ease;
+}
+
+/* モバイル版のスタイル */
+@media (max-width: 481px) {
+  .menu-icon {
+    display: flex;
   }
 
-  header .logo {
-      justify-content: center;
-      margin-bottom: 10px; /* ロゴとナビゲーション間にスペースを追加 */
-  }
-
-  header .logo h3 {
-      font-size: 24px; /* ロゴのテキストサイズを縮小 */
-  }
-
-  nav {
-      margin-left: 0; /* モバイルでは`nav`を中央配置に */
+  .nav-menu {
+    display: flex; /* メニューがサイドバーとして表示 */
   }
 
   .nav-list {
-      flex-direction: column;
-      gap: 10px; /* ナビゲーション間のスペースを縮小 */
-      align-items: center; /* ナビゲーションを中央揃え */
+    flex-direction: column;
+  }
+
+  /* デスクトップ版のメニューは非表示に */
+  .nav-menu-desktop {
+    display: none;
+  }
+}
+
+/* デスクトップ版のスタイル */
+@media (min-width: 481px) {
+  /* モバイル版のメニューアイコンは非表示に */
+  .menu-icon {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    flex-direction: row;
+    padding-top: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    margin-right: 20px;
   }
 
   .nav-list li {
-      margin-right: 0; /* 余分な右マージンを削除 */
+    margin: 0 20px;
   }
 
-  .nav-list a {
-      font-size: 14px; /* テキストサイズを小さくして視認性を保つ */
-  }
-
-  .contact-btn .btn {
-      width: 100%;
-      text-align: center;
-      font-size: 14px; /* ボタンのテキストサイズを縮小 */
-      padding: 10px; /* ボタンのパディングを調整 */
-      margin: 10px 0; /* ボタン上下に余白を追加 */
+  .contact-btn {
+    margin-top: 0;
   }
 }

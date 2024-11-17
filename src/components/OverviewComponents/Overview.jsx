@@ -58,7 +58,7 @@ export default function Overview() {
     <div>
       {/* タイトル */}
       <div>
-        <h1 className="backup-title">事 業 概 要</h1>
+        <h1 className="backup-title"><br />事 業 概 要</h1>
       </div>
 
       {/* カード部分 */}
