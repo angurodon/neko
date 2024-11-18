@@ -7,35 +7,25 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* ロゴと会社情報 */}
+        {/* ロゴと個人情報保護方針 */}
         <div className="footer-logo">
           <img src={logo} alt="Ic ロゴ" />
-
-          
           <Link to="/privacy"><h4>個人情報保護方針について</h4></Link>
-
-          {/* ソーシャルアイコン */}
-          {/* <div className="social-icons">
-            <a href="#"><i className="fa fa-instagram"></i></a>
-            <a href="#"><i className="fa fa-dribbble"></i></a>
-            <a href="#"><i className="fa fa-twitter"></i></a>
-            <a href="#"><i className="fa fa-youtube"></i></a>
-          </div> */}
         </div>
 
         {/* 会社概要 */}
-        <div className="footer-links">
-          <h4>会社概要</h4>
+        <div className="footer-links company-info">
+          {/* <h4>会社概要</h4> */}
           <ul>
             <li><Link to="/about-us">会社情報</Link></li>
-            <li><Link to="/contact">お問い合わせ</Link></li>
-            <li><Link to="/pricing">料金</Link></li>
-            <li><Link to="/testimonials">お客様の声</Link></li>
+            <li><a href="mailto:ic-growth-aoi@ic-gr.com"> お問い合わせ</a></li>
+            <li><Link to="/overview">事業概要</Link></li>
+            {/* <li><Link to="/testimonials">お客様の声</Link></li> */}
           </ul>
         </div>
 
         {/* サービス */}
-        <div className="footer-links">
+        {/* <div className="footer-links services">
           <h4>サービス</h4>
           <ul>
             <li><Link to="/policy">利用規約</Link></li>
@@ -43,7 +33,7 @@ export default function Footer() {
             <li><Link to="/overview">事業概要</Link></li>
             <li><Link to="#">-</Link></li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

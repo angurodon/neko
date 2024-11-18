@@ -20,6 +20,7 @@ function App() {
       <Header />
         
         <Routes>
+          <Route path="/neko" element={<Homepage />}></Route>
           <Route path="/" element={<Homepage />}></Route>
 
           <Route path="/overview" element={<Overview />} />
