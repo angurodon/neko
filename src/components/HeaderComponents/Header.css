@@ -27,6 +27,12 @@ body {
 
 .logo img {
   height: 40px; /* ロゴのサイズを適切に調整 */
+  transition: transform 0.3s ease-in-out; /* ホバーアニメーション用 */
+}
+
+/* ホバー時の拡大 */
+.logo img:hover {
+  transform: scale(1.1); /* 1.1倍に拡大 */
 }
 
 /* サイドバーのデフォルトは非表示 */
@@ -93,7 +99,7 @@ body {
   cursor: pointer;
   z-index: 1002; /* ロゴより上に表示 */
   position: absolute; /* 位置を絶対指定 */
-  right: 40px; /* 右からの位置を調整 */
+  right: 50px; /* 右からの位置を調整 */
 }
 
 .menu-icon .bar {
@@ -108,6 +114,7 @@ body {
   font-size: 1.8rem;
   color: #333;
   transition: all 0.4s ease;
+  right: 50px; /* 右からの位置を調整 */
 }
 
 /* モバイル版のスタイル */

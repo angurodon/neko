@@ -21,20 +21,10 @@
   margin-bottom: 10px;
 }
 
-.footer-logo h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
 .footer-logo h4 {
   font-size: 18px;
   margin-bottom: 10px;
   padding-left: 60px;
-}
-
-.footer-logo p {
-  font-size: 14px;
-  margin-bottom: 10px;
 }
 
 .footer-logo a {
@@ -43,21 +33,6 @@
   font-size: 14px;
   display: block;
   margin-bottom: 20px;
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-}
-
-.social-icons a {
-  color: #fff;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-
-.social-icons a:hover {
-  color: #9b59b6;
 }
 
 .footer-links {
@@ -72,6 +47,8 @@
 .footer-links ul {
   list-style: none;
   padding: 0;
+  margin-top: 70px;
+  
 }
 
 .footer-links ul li {
@@ -81,7 +58,7 @@
 .footer-links ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 18px;
   transition: color 0.3s;
 }
 
@@ -89,70 +66,105 @@
   color: #9b59b6;
 }
 
-@media (max-width: 768px) {
-  .footer-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-
-  .footer-links {
-      margin-top: 20px;
-  }
+/* お問い合わせフォームのスタイル */
+.footer-contact {
+  flex: 1;
 }
 
-/* ============================= */
-/* モバイル版（480px以下）用スタイル */
-/* ============================= */
-@media (max-width: 480px) {
-  .footer {
-      padding: 20px 10px; /* パディングを少し増やしてスペースを確保 */
-  }
+.footer-contact h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
 
+.footer-contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact input[type="email"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-contact button {
+  padding: 8px;
+  background-color: #9b59b6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer-contact button:hover {
+  background-color: #8e44ad;
+}
+
+@media (max-width: 768px) {
   .footer-container {
-      flex-direction: column; /* 縦並びに変更 */
-      align-items: center; /* 中央揃えに */
-      text-align: center; /* 全体のテキストを中央揃え */
-      gap: 20px; /* 各要素間に少し余白を追加 */
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 0px;
+
   }
 
   .footer-logo {
-      margin-top: 30px; /* 上のマージンを減らしてスペースを確保 */
+    order: 3; /* モバイル版でロゴを一番下に配置 */
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
   }
 
   .footer-logo img {
-      max-width: 70%; /* 画像の幅を広げて視認性を向上 */
+    max-width: 70%;
   }
 
-  .footer-logo h3,
   .footer-logo h4 {
-      font-size: 20px; /* フォントサイズを少し縮小 */
-      padding-left: 0; /* 左側のパディングを削除して中央揃えに */
+
+    padding-left: 0;
+    text-align: center;
   }
 
-  .footer-logo p,
+  .footer-links,
+  .footer-contact {
+    order: 1; /* フッターリンクとお問い合わせを上部に配置 */
+    margin-top: 20px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 18px;
+  }
+
+  .footer-links ul li a,
+  .footer-contact input[type="email"],
+  .footer-contact button {
+    font-size: 14px;
+  }
+
   .footer-logo a {
-      font-size: 13px; /* フォントサイズを縮小 */
+    color: #9b59b6; /* リンクの色をデスクトップ版と一致 */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 10px;
   }
 
-  .footer-links {
-      margin-top: 15px; /* 間隔を調整 */
+  .footer-container {
+    gap: 20px;
   }
 
-  .footer-links h4 {
-      font-size: 18px; /* フォントサイズを小さく調整 */
+  .footer-logo h4 {
+    font-size: 16px;
   }
 
-  .footer-links ul li a {
-      font-size: 14px; /* リンクのフォントサイズを縮小 */
-  }
-
-  .social-icons {
-      margin-top: 15px; /* 上部に余白を追加 */
-      gap: 15px; /* アイコン間のスペースを広げて配置 */
-  }
-
-  .social-icons a {
-      font-size: 18px; /* アイコンのフォントサイズを縮小 */
+  .footer-links ul li a,
+  .footer-contact input[type="email"],
+  .footer-contact button {
+    font-size: 14px;
   }
 }

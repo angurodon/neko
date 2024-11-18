@@ -10,12 +10,7 @@ export default function Consult() {
       <div className="consult-container">
         <div className="consult-line">
           {/* 左側の Consult タイトル */}
-          <h1>Tel:03-3960-3311</h1>
-          <h1>FAX:</h1>
-          <div className="mail">
-          <h2><a href="mailto:ic-growth-aoi@ic-gr.com">ic-growth-aoi@ic-gr.com</a></h2>
-          </div>
-
+          <h1>TEL:03-3960-3311</h1>
         </div>
       </div>
     </div>

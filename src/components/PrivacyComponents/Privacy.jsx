@@ -1,9 +1,12 @@
 import React from 'react';
 import './Privacy.css'; // スタイルを別途作成
+import ScrollToTop from '../../ScrollToTop';
+
 
 export default function Privacy() {
   return (
     <div className="privacy-root">
+      <ScrollToTop />
       <h1>個人情報保護方針について</h1>
       <p>
         株式会社Ｉｃ－Ｇｒｏｗｔｈ（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、

@@ -94,52 +94,56 @@
 /* ============================= */
 @media (max-width: 480px) {
   .backup-container {
-    padding: 30px 10px; /* 上下の余白を少なくしてスペースを確保 */
+    padding: 30px 10px;
   }
 
   .backup-title {
-    font-size: 2rem; /* タイトルのフォントサイズを小さく調整 */
-    margin-bottom: 15px; /* マージンを調整 */
+    font-size: 2rem;
+    margin-bottom: 15px;
   }
 
   .backup-description {
-    font-size: 0.9rem; /* 説明のフォントサイズを少し縮小 */
-    margin-bottom: 20px; /* マージンを小さく */
+    font-size: 0.9rem;
+    margin-bottom: 20px;
   }
 
   .backup-cards {
-    gap: 20px; /* カード間のスペースを小さく */
-    flex-direction: column; /* モバイルでは縦に並べる */
-    align-items: center; /* カードを中央揃え */
+    gap: 20px;
+    flex-direction: column;
+    align-items: stretch; /* カードを伸ばして同じ高さに */
   }
 
   .card {
-    max-width: 100%; /* カードの幅を100%にして全体を使う */
-    padding: 15px; /* パディングを縮小 */
-    margin-bottom: 20px; /* カードの間にスペースを追加 */
+    max-width: 100%;
+    padding: 35px;
+    margin-bottom: 30px;
+    flex: 1; /* カードが同じ高さになるように */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .card-title {
-    font-size: 1.2rem; /* タイトルのフォントサイズを縮小 */
-    margin-bottom: 10px; /* マージンを縮小 */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 
   .MAS {
-    font-size: 1.1rem; /* フォントサイズを縮小 */
-    margin-bottom: 15px; /* マージンを小さく */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
   }
 
   .card-icon {
-    font-size: 2rem; /* アイコンのサイズを少し小さく */
-    margin-bottom: 10px; /* マージンを縮小 */
+    font-size: 2rem;
+    margin-bottom: 10px;
   }
 
   .card-description {
-    font-size: 0.9rem; /* 説明文のフォントサイズを少し縮小 */
+    font-size: 0.9rem;
   }
 
   .icon-image {
-    max-width: 80px; /* アイコンのサイズを縮小 */
-    max-height: 80px; /* アイコンのサイズを縮小 */
+    max-width: 80px;
+    max-height: 80px;
   }
 }

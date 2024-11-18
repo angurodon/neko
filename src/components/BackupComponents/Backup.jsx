@@ -42,10 +42,9 @@ export default function Backup() {
             <div className="card-icon">
               <img src={MAS} alt="MAS" className="icon-image" />
             </div>
-            <h2 className="card-title">経営アドバイザリーサービス</h2>
-            <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
-            </p>
+            <h2 className="card-title">経営 <br/>アドバイザリーサービス</h2>
+
+
           </Link>
         </div>
       </div>

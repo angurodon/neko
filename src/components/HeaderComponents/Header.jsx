@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css'; // CSSファイルのインポート
 import logo from '../../assets/logo_side.png';
+import ScrollToTop from '../../ScrollToTop';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-  
+
+    const handleLogoClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // ページトップにスムーズにスクロール
+    };
+
     return (
         <header className='header'>
+            <ScrollToTop />
             <div className='logo'>
-                <img src={logo} alt="会社ロゴ" />
+                <Link to='/' onClick={handleLogoClick}>
+                    <img src={logo} alt="会社ロゴ" />
+                </Link>
             </div>
 
             {/* ハンバーガーメニューアイコン */}
