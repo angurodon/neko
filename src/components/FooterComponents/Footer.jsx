@@ -17,9 +17,9 @@ export default function Footer() {
         <div className="footer-links company-info">
           {/* <h4>会社概要</h4> */}
           <ul>
-            <li><Link to="/about-us">会社情報</Link></li>
+          <li><Link to="/overview">事業概要</Link></li>
+            <li><Link to="/company">会社概要</Link></li>
             <li><a href="mailto:ic-growth-aoi@ic-gr.com"> お問い合わせ</a></li>
-            <li><Link to="/overview">事業概要</Link></li>
             {/* <li><Link to="/testimonials">お客様の声</Link></li> */}
           </ul>
         </div>

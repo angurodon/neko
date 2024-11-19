@@ -157,3 +157,35 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* リスト全体のスタイル */
+.business-support-points,
+.system-support-points {
+  list-style: none; /* デフォルトの「・」を削除 */
+  padding-left: 0; /* 左の余白を調整 */
+}
+
+/* リスト項目の共通スタイル */
+.business-support-points li,
+.system-support-points li {
+  position: relative; /* ::before を配置するために relative を指定 */
+  padding-left: 25px; /* チェックマーク分のスペースを確保 */
+  margin-bottom: 10px; /* 各リスト項目の間に余白を追加 */
+  font-size: 1rem;
+  line-height: 3.0;
+  color: #333; /* テキスト色 */
+  text-align: left;
+}
+
+/* チェックマークの共通スタイル */
+.business-support-points li::before,
+.system-support-points li::before {
+  content: '✓'; /* チェックマークを表示 */
+  color: #137b1e; /* チェックマークの色 */
+  font-weight: bold;
+  position: absolute;
+  left: 0; /* テキストの左端に配置 */
+  top: 0;
+  font-size: 1.2rem; /* チェックマークのサイズ */
+  line-height: 2.3; /* チェックマークの縦位置を調整 */
+}
