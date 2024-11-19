@@ -1,22 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Overview.css';
 import backup_ec from '../../assets/backup_ec.png';
 import backup_system from '../../assets/backup_system.png';
 import MAS from '../../assets/MAS.png';
 import { useLocation } from 'react-router-dom';
-import { Element, scroller } from 'react-scroll'; 
+import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
 
 export default function Overview() {
   const location = useLocation();
-  const fadeElementsRef = useRef([]);
+  const [fadeElements, setFadeElements] = useState([]); // 修正: useStateで要素を管理
 
+  // クエリパラメータからスクロールターゲットを取得
   useEffect(() => {
-    // クエリパラメータからスクロールターゲットを取得
     const params = new URLSearchParams(location.search);
     const target = params.get('target');
 
-    // 対応するセクションにスクロール
     if (target) {
       scroller.scrollTo(target, {
         smooth: true,
@@ -26,33 +25,37 @@ export default function Overview() {
     }
   }, [location]);
 
+  // フェードインアニメーションの設定
   useEffect(() => {
-    // Intersection Observer APIを使用してスクロール時のフェードインを設定
     const observer = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('fade-in-visible');
             observer.unobserve(entry.target); // 一度表示されたら監視を解除
           }
         });
       },
-      {
-        threshold: 0.1, // 要素の10%が見えたらフェードインを開始
-      }
+      { threshold: 0.1 } // 要素の10%が見えたらフェードインを開始
     );
 
-    fadeElementsRef.current.forEach((el) => {
+    fadeElements.forEach((el) => {
       if (el) observer.observe(el);
     });
 
-    // クリーンアップ関数
     return () => {
-      fadeElementsRef.current.forEach((el) => {
+      fadeElements.forEach((el) => {
         if (el) observer.unobserve(el);
       });
     };
-  }, []);
+  }, [fadeElements]); // 修正: fadeElementsを依存配列に追加
+
+  // 要素を登録する関数
+  const registerFadeElement = (el) => {
+    if (el && !fadeElements.includes(el)) {
+      setFadeElements((prev) => [...prev, el]);
+    }
+  };
 
   return (
     <div>
@@ -64,50 +67,41 @@ export default function Overview() {
       {/* カード部分 */}
       <div className="backup-cards">
         {/* カード1 */}
-        <div 
+        <div
           className="card fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <ScrollLink to="system-support" smooth={true} duration={500} className="card-link">
             <div className="card-icon">
               <img src={backup_system} alt="経理システムの導入支援" className="icon-image" />
             </div>
             <h2 className="card-title">経理システムの導入支援</h2>
-            <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
-            </p>
           </ScrollLink>
         </div>
 
         {/* カード2 */}
-        <div 
+        <div
           className="card fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <ScrollLink to="business-support" smooth={true} duration={500} className="card-link">
             <div className="card-icon">
               <img src={backup_ec} alt="経理支援アイコン" className="icon-image" />
             </div>
             <h2 className="card-title">経理支援</h2>
-            <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
-            </p>
           </ScrollLink>
         </div>
 
         {/* カード3 */}
-        <div 
+        <div
           className="card fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <ScrollLink to="msa-support" smooth={true} duration={500} className="card-link">
             <div className="card-icon">
               <img src={MAS} alt="MAS" className="icon-image" />
             </div>
-            <h2 className="card-title">経営アドバイザリーサービス</h2>
-            <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
-            </p>
+            <h2 className="card-title">経営<br />アドバイザリーサービス</h2>
           </ScrollLink>
         </div>
       </div>
@@ -116,7 +110,7 @@ export default function Overview() {
       <Element name="business-support">
       <div 
           className="business-support-container fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <div className="business-support-content">
             <h1 className="business-support-title">経理支援</h1>
@@ -145,7 +139,7 @@ export default function Overview() {
       <Element name="system-support">
       <div 
           className="system-support-container fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <div className="system-support-content">
             <h1 className="system-support-title">経理システム導入支援 <br />（経理の自動化）</h1>
@@ -169,7 +163,7 @@ export default function Overview() {
       <Element name="msa-support">
       <div 
           className="msa-support-container fade-in"
-          ref={(el) => fadeElementsRef.current.push(el)}
+          ref={registerFadeElement} // 修正: registerFadeElementを使用
         >
           <div className="msa-content">
             <h1 className="msa-title">経営支援</h1>

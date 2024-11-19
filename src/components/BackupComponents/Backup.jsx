@@ -22,7 +22,7 @@ export default function Backup() {
             </div>
             <h2 className="card-title">経理システムの導入支援</h2>
             <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
+              {/* 当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します */}
             </p>
           </Link>
         </div>
@@ -33,7 +33,7 @@ export default function Backup() {
             </div>
             <h2 className="card-title">経理支援</h2>
             <p className="card-description">
-              当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します
+              {/* 当社の会員管理ソフトウェアは、会員の更新と支払いを自動化します */}
             </p>
           </Link>
         </div>

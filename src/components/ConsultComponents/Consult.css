@@ -31,38 +31,100 @@
 
 /* タイトル */
 .consult-line h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #aecab9;
+  color: #14a54e;
   letter-spacing: 10px;
 }
 
-.consult-line h2 {
-  font-size: 35px;
+
+/* 電話番号テキスト */
+.phone-number {
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 5px;
-  color: #a0b9aa;
-  letter-spacing: 5px;
+  margin: 0;
+  color: #A2E699; /* 初期色を明るい黄緑に設定 */
+  background-image: linear-gradient(to right, #A2E699 0%, #ffffff 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.5s ease; /* 色の遷移をスムーズに */
 }
 
-.mail a {
-  color: #aecab9 !important;
-  text-decoration: none !important;
+/* 電話番号ボックス */
+.consult-phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid #A2E699;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #333;
+  margin-top: 60px;
+  overflow: hidden;
+  z-index: 0; /* スタッキングコンテキストを確立 */
+}
+
+/* ホバー時の背景スライドアニメーション */
+.consult-phone::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* 初期位置を左側に設定 */
+  width: 100%;
+  height: 100%;
+  background-color: #58cf49; /* ホバー時の背景色 */
+  z-index: 1; /* 背景色をテキストの背後に配置 */
+  transition: left 0.5s ease; /* 左位置のトランジションを設定 */
+}
+
+.consult-phone:hover::after {
+  left: 0; /* ホバー時に背景を左から右にスライド */
+}
+
+/* テキストおよびアイコンの前面表示 */
+.consult-phone .phone-number,
+.consult-phone .phone-icon {
+  position: relative;
+  z-index: 2; /* テキストとアイコンを前面に表示 */
+}
+
+/* 電話番号テキスト */
+.phone-number {
+  font-size: 1.8rem;
   font-weight: bold;
+  margin: 0;
+  color: #333; /* 初期はダークグレーに設定 */
+  transition: color 0.5s ease;
 }
 
-.mail a:visited {
-  color: #aecab9 !important;
+/* ホバー時の電話番号の色変更 */
+.consult-phone:hover .phone-number {
+  color: #ffffff; /* 背景と対照的な白色に変更 */
 }
 
-.mail a:hover {
-  color: #89a892 !important;
-  text-decoration: underline !important;
+/* 電話アイコン */
+.phone-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+  color: #333; /* 初期はダークグレーに設定 */
+  transition: color 0.5s ease;
 }
 
-.mail a:active {
-  color: #aecab9 !important;
+/* ホバー時の電話アイコンの色変更 */
+.consult-phone:hover .phone-icon {
+  color: #ffffff; /* 背景と対照的な白色に変更 */
+}
+
+.phone-icon-svg {
+  width: 7rem;  /* 幅を指定 */
+  height: auto; /* 高さは自動調整 */
 }
 
 /* ============================= */
