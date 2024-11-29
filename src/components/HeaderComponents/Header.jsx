@@ -46,7 +46,7 @@ const Header = () => {
                     <li><Link to="/company" onClick={toggleMenu}>会社概要</Link></li>
                 </ul>
                 <div className='contact-btn'>
-                    <a href="mailto:ic-growth-aoi@ic-gr.com" className="btn" onClick={toggleMenu}>お問い合わせ</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScEXuDiU9GfCsL2Q4nmK9En8xLd8UzVYR6B95K9IKwNAL6GTQ/viewform" className="btn" onClick={toggleMenu}>お問い合わせ</a>
                 </div>
             </nav>
         </header>
