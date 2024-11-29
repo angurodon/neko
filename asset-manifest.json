@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/neko/static/css/main.491006f5.css",
-    "main.js": "/neko/static/js/main.027d8e19.js",
+    "main.js": "/neko/static/js/main.330ffcda.js",
     "static/media/backup_ec.png": "/neko/static/media/backup_ec.ffb9202a592b6dc33d5a.png",
     "static/media/backup_system.png": "/neko/static/media/backup_system.0bc753d9d98710ba56d7.png",
     "static/media/MAS.png": "/neko/static/media/MAS.894b17edc198a8932f34.png",
@@ -10,10 +10,10 @@
     "static/media/logo_side.png": "/neko/static/media/logo_side.ddfa3f8900b0c2824c93.png",
     "index.html": "/neko/index.html",
     "main.491006f5.css.map": "/neko/static/css/main.491006f5.css.map",
-    "main.027d8e19.js.map": "/neko/static/js/main.027d8e19.js.map"
+    "main.330ffcda.js.map": "/neko/static/js/main.330ffcda.js.map"
   },
   "entrypoints": [
     "static/css/main.491006f5.css",
-    "static/js/main.027d8e19.js"
+    "static/js/main.330ffcda.js"
   ]
 }
