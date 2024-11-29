@@ -19,7 +19,7 @@ export default function Footer() {
           <ul>
           <li><Link to="/overview">事業概要</Link></li>
             <li><Link to="/company">会社概要</Link></li>
-            <li><a href="mailto:ic-growth-aoi@ic-gr.com"> お問い合わせ</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScEXuDiU9GfCsL2Q4nmK9En8xLd8UzVYR6B95K9IKwNAL6GTQ/viewform"> お問い合わせ</a></li>
             {/* <li><Link to="/testimonials">お客様の声</Link></li> */}
           </ul>
         </div>
