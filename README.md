@@ -160,16 +160,6 @@ aws --profile ic-gr iam put-role-policy \
   --policy-document file://role-policy.json
 ```
 
-#### 3. S3 バケットのバージョニング有効化（事故対策）
-
-```bash
-aws --profile ic-gr s3api put-bucket-versioning \
-  --bucket ic-gr.com \
-  --versioning-configuration Status=Enabled
-```
-
-`s3 sync --delete` で消したオブジェクトも 30 日間（任意）はバージョン履歴から復旧できる。
-
 ### 動作確認
 
 セットアップ後、初回は手動トリガーで安全に確認できる:
