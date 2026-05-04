@@ -20,13 +20,11 @@ npm run lint
 develop  ← 機能ブランチからの PR を集約（デフォルト）
    │
    ▼
-  main   ← ステージング相当
-   │
-   ▼
   prod   ← push されると本番デプロイ
 ```
 
 機能ブランチは `feature/<topic>` 命名で `develop` から切る。
+ステージング環境は存在しないため、`develop` での動作確認後にそのまま `prod` へ進める。
 
 ---
 
@@ -36,28 +34,24 @@ develop  ← 機能ブランチからの PR を集約（デフォルト）
 
 ### 手順（推奨：PR 経由）
 
-GitHub UI から段階的に PR を立てる。
-
-1. `develop` 上で動作確認（`npm run dev` / プレビュー環境など）
-2. `develop → main` の PR を作成・マージ（ステージング相当）
-3. `main → prod` の PR を作成・マージ（**push された瞬間に本番デプロイが走る**）
-4. Actions タブで `Deploy to ic-gr.net` ジョブが完走するのを確認
-5. `https://www.ic-gr.net/` を全ページ + 直リンクハードリロードで確認
+1. `develop` 上で動作確認（`npm run dev` でローカル確認、必要なら機能ブランチを develop に取り込む）
+2. `develop → prod` の PR を作成・マージ（**push された瞬間に本番デプロイが走る**）
+3. Actions タブで `Deploy to ic-gr.net` ジョブが完走するのを確認
+4. `https://www.ic-gr.net/` を全ページ + 直リンクハードリロードで確認
 
 ### 手順（緊急時：CLI から直接）
 
 `prod` への push が直接走るため取り扱い注意。
 
 ```bash
-git checkout main && git merge --no-ff develop && git push
-git checkout prod && git merge --no-ff main   && git push   # ← ここでデプロイ起動
+git checkout prod && git merge --no-ff develop && git push   # ← ここでデプロイ起動
 ```
 
 ### ワークフロー
 
 | ファイル | トリガ | やること |
 |---|---|---|
-| `.github/workflows/ci.yml` | `develop` / `main` / `prod` への PR | `npm run lint` + `npm run build` |
+| `.github/workflows/ci.yml` | `develop` / `prod` への PR | `npm run lint` + `npm run build` |
 | `.github/workflows/deploy.yml` | `prod` への push（または手動 `workflow_dispatch`） | `next build` → `aws s3 sync out/` → CloudFront invalidation |
 
 GitHub Actions は **OIDC で IAM Role を assume する**ので、リポジトリに長期 AWS 認証情報を置かない。
