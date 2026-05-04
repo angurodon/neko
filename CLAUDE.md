@@ -22,11 +22,10 @@ npm run lint
 develop  ← 機能ブランチからの PR を集約
    │
    ▼
-  main   ← ステージング想定
-   │
-   ▼
   prod   ← push されると本番デプロイ
 ```
+
+ステージング環境は存在しない。`develop` で動作確認後にそのまま `prod` へ進める。
 
 ワークフロー:
 - `.github/workflows/ci.yml` — PR 時に `npm run lint` + `npm run build` を実行
@@ -113,7 +112,6 @@ ic-gr-website/
 ## ブランチ運用
 
 - `develop` （デフォルト）: 機能ブランチからの PR を集約
-- `main`: ステージング相当
 - `prod`: push されると本番デプロイ
-- 旧 `gh-pages` ブランチは GitHub Pages 時代の遺物。今は不要なので削除して問題ない
+- 旧 `main` / `gh-pages` ブランチは過去の遺物。ステージングは持たない運用に変更したため `main` は使わない
 - 機能ブランチは `feature/<topic>` 命名で `develop` から切る

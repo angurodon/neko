@@ -20,13 +20,11 @@ npm run lint
 develop  ← 機能ブランチからの PR を集約（デフォルト）
    │
    ▼
-  main   ← ステージング相当
-   │
-   ▼
   prod   ← push されると本番デプロイ
 ```
 
 機能ブランチは `feature/<topic>` 命名で `develop` から切る。
+ステージング環境は存在しないため、`develop` での動作確認後にそのまま `prod` へ進める。
 
 ---
 
@@ -34,20 +32,36 @@ develop  ← 機能ブランチからの PR を集約（デフォルト）
 
 `prod` ブランチへの push で GitHub Actions が自動デプロイする。手動操作は不要。
 
+### 手順（推奨：PR 経由）
+
+1. `develop` 上で動作確認（`npm run dev` でローカル確認、必要なら機能ブランチを develop に取り込む）
+2. `develop → prod` の PR を作成・マージ（**push された瞬間に本番デプロイが走る**）
+3. Actions タブで `Deploy to ic-gr.net` ジョブが完走するのを確認
+4. `https://www.ic-gr.net/` を全ページ + 直リンクハードリロードで確認
+
+### 手順（緊急時：CLI から直接）
+
+`prod` への push が直接走るため取り扱い注意。
+
 ```bash
-# 例: develop で動作確認 → main でステージ確認 → prod に進める
-git checkout main && git merge --no-ff develop && git push
-git checkout prod && git merge --no-ff main   && git push   # ← ここでデプロイ起動
+git checkout prod && git merge --no-ff develop && git push   # ← ここでデプロイ起動
 ```
 
-ワークフロー:
+### ワークフロー
 
 | ファイル | トリガ | やること |
 |---|---|---|
-| `.github/workflows/ci.yml` | `develop` / `main` / `prod` への PR | `npm run lint` + `npm run build` |
-| `.github/workflows/deploy.yml` | `prod` への push（または手動 dispatch） | `next build` → `aws s3 sync out/` → CloudFront invalidation |
+| `.github/workflows/ci.yml` | `develop` / `prod` への PR | `npm run lint` + `npm run build` |
+| `.github/workflows/deploy.yml` | `prod` への push（または手動 `workflow_dispatch`） | `next build` → `aws s3 sync out/` → CloudFront invalidation |
 
 GitHub Actions は **OIDC で IAM Role を assume する**ので、リポジトリに長期 AWS 認証情報を置かない。
+
+### 失敗時の挙動
+
+- **CI ジョブが赤** → コードまたは型の問題。原因を直して PR を更新する
+- **deploy ジョブが赤（assume role 失敗）** → IAM Role の信頼ポリシーがリポジトリ名・ブランチを正しく指しているか確認（[トラブルシュート](#災害復旧--再構築)）
+- **deploy ジョブが赤（s3 sync / invalidation 失敗）** → 権限ポリシー、もしくは S3 / CloudFront のリソース ID 不一致を疑う
+- **デプロイは完走したのに反映されない** → CloudFront のキャッシュ。invalidation が走っているはずだが、ブラウザ側のキャッシュも疑う（DevTools → Disable cache）。`E3CUYP7CXV3V06`（`*.ic-gr.com` 系）には invalidation を撃っていない
 
 ### 緊急時の手動デプロイ（フォールバック）
 
@@ -80,24 +94,37 @@ aws --profile ic-gr cloudfront create-invalidation \
 
 `output: 'export'` + `trailingSlash: true` により、各ルートが `out/<route>/index.html` で生成される。CloudFront の Custom Error Response 設定なしでハードリロードでも 200 が返る。
 
-### 初回セットアップ手順（`prod` 初回 push 前に一度だけ実施）
+> **AWS 側の初回セットアップは完了済み**（OIDC Provider と IAM Role `github-actions-ic-gr-deploy` は作成済み）。日常運用では追加の AWS 操作は不要。再構築が必要になった場合のみ [災害復旧 / 再構築](#災害復旧--再構築) を参照。
 
-ローカルで `aws --profile ic-gr` を使う前提で記載。Console で行っても可。
+---
 
-#### 1. GitHub OIDC Provider を作成
+## 災害復旧 / 再構築
+
+AWS リソースを誤って消したり別アカウントへ引越す際の手順。日常運用では使わない。
+
+### OIDC Provider と IAM Role の再作成
+
+`aws --profile ic-gr` で以下を順に実行する。
 
 ```bash
+# 1. OIDC Provider
 aws --profile ic-gr iam create-open-id-connect-provider \
   --url https://token.actions.githubusercontent.com \
   --client-id-list sts.amazonaws.com \
   --thumbprint-list 6938fd4d98bab03faadb97b34396831e3780aea1
+
+# 2. IAM Role（trust-policy.json と role-policy.json を作ってから）
+aws --profile ic-gr iam create-role \
+  --role-name github-actions-ic-gr-deploy \
+  --assume-role-policy-document file://trust-policy.json
+
+aws --profile ic-gr iam put-role-policy \
+  --role-name github-actions-ic-gr-deploy \
+  --policy-name deploy \
+  --policy-document file://role-policy.json
 ```
 
-> サムプリントは GitHub 公式の値。詳細は [Configuring OpenID Connect in Amazon Web Services](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) を参照。既に作成済みのアカウントではこのコマンドはスキップする。
-
-#### 2. デプロイ用 IAM Role を作成
-
-信頼ポリシー（`trust-policy.json`）:
+`trust-policy.json`（GitHub Actions に AssumeRole を許可する条件）:
 
 ```json
 {
@@ -122,7 +149,7 @@ aws --profile ic-gr iam create-open-id-connect-provider \
 }
 ```
 
-権限ポリシー（`role-policy.json`）:
+`role-policy.json`（このロールが実行できるアクション）:
 
 ```json
 {
@@ -147,30 +174,13 @@ aws --profile ic-gr iam create-open-id-connect-provider \
 }
 ```
 
-作成コマンド:
+### 切り分けのポイント
 
-```bash
-aws --profile ic-gr iam create-role \
-  --role-name github-actions-ic-gr-deploy \
-  --assume-role-policy-document file://trust-policy.json
+deploy ジョブが落ちた時の典型的な原因:
 
-aws --profile ic-gr iam put-role-policy \
-  --role-name github-actions-ic-gr-deploy \
-  --policy-name deploy \
-  --policy-document file://role-policy.json
-```
-
-### 動作確認
-
-セットアップ後、初回は手動トリガーで安全に確認できる:
-
-1. GitHub の `Actions` タブ → `Deploy to ic-gr.net` → `Run workflow` → ブランチ `prod` を指定
-2. ジョブが完走したら `https://www.ic-gr.net/` を全ページ + 直リンクハードリロードで確認
-
-エラーが出たら主に以下のいずれか:
-- IAM Role の信頼ポリシー（`sub` 条件）がリポジトリ名・ブランチ名と一致していない
-- IAM Role の権限ポリシーで S3 / CloudFront の対象リソース ARN が違う
-- OIDC Provider のサムプリントが古い（GitHub 側のキー更新時）
+- **AssumeRole 失敗**: 信頼ポリシーの `sub` がリポジトリ名・ブランチ名と一致していない（リネーム後など）
+- **S3 / CloudFront 操作で `AccessDenied`**: 権限ポリシーで指定したリソース ARN が違う
+- **OIDC Provider 認証エラー**: GitHub 側のキー更新でサムプリントが古くなった可能性
 
 ---
 
