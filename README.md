@@ -54,7 +54,7 @@ git checkout prod && git merge --no-ff develop && git push   # ← ここでデ�
 | `.github/workflows/ci.yml` | `develop` / `prod` への PR | `npm run lint` + `npm run build` |
 | `.github/workflows/deploy.yml` | `prod` への push（または手動 `workflow_dispatch`） | `next build` → `aws s3 sync out/` → CloudFront invalidation |
 
-GitHub Actions は **OIDC で IAM Role を assume する**ので、リポジトリに長期 AWS 認証情報を置かない。
+GitHub Actions は **OIDC で IAM Role を assume する**ので、リポジトリに長期 AWS 認証情報を置かない。仕組みの詳細は [`doc/deploy-architecture.md`](doc/deploy-architecture.md) を参照。
 
 ### 失敗時の挙動
 
