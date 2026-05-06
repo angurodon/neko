@@ -167,6 +167,42 @@ npm run build       # static export 成功
 npx react-doctor@latest . --score   # 99/100 を baseline として維持
 ```
 
+## 後続の改修ログ
+
+shadcn/ui 初期導入のあとに行った継続改修。
+
+### Typography（feature/typography-and-accent）
+
+- 見出し用フォントとして **Zen Kaku Gothic New** を `next/font/google` 経由で導入
+  （weight 500/700/900、`--font-zen-kaku` 変数として `<html>` にバインド）
+- `globals.css` の `--font-heading` を Zen Kaku に紐付け、`@layer base` で `h1/h2/h3` に自動適用
+- 本文は OS 既定の Hiragino / Yu Gothic スタックのまま（軽量重視）
+
+### アクセントカラーの導入（同上）
+
+- `:root` に `--accent: #f5a623` を残しつつ、実 UI で eyebrow ラベル / 小区切り Separator に投入
+  - `Accounting Transformation` / `Service 0X` / `Our Services` / `Case 0X` などの上付きラベル
+  - 各セクション h2 直下の `Separator`（`max-w-12 bg-brand-accent`）
+- 「青支配 + 朱の差し色」の構図を採用。CTA・カード強調は青のまま
+
+### ハイドレーション・カスケードの落とし穴
+
+- `globals.css` のトップレベルにあった `a { color: inherit; }` がアンレイヤーで Tailwind ユーティリティを上書きしていた
+  → `@layer base` 内に閉じ込めてユーティリティ優先に戻した
+- Server Component 内の `new Date().getFullYear()` は React Doctor がハイドレーション警告を出すため、モジュールトップで定数化（`const COPYRIGHT_YEAR = new Date().getFullYear();`）
+
+### ページ構造の刷新（feature/typography-and-accent / feature/home-and-header-polish）
+
+- `/company`: 「8 行のテーブル単発」を解消し、Hero / 基本情報（dl）/ サービス4カテゴリ Card グリッド / Access + Map iframe + CTA の 4 セクション構成へ
+- `/overview`: 1 列箇条書き + 不揃いな見出し階層を解消し、ヒーロー / 各サービス（左: 番号 + h2 + lede / 右: 特徴ドット箇条書き）/ MAS の Case 01・02 サブカード / 末尾 CTA の構成へ
+- `/`（ホーム）: ヒーロー (`SectionComponent1`) に「サービスを見る / お問い合わせ」の二段 CTA を追加。`Backup` の 3 カードを `/overview` ヒーローと同じ「icon + Service 番号 + 詳しく見る →」パターンに統一
+- お問い合わせ系 CTA（Header / `/overview` 末尾 / `/company` 末尾）はブランドのコンタクト用イメージカラー `#5fc061` で統一。`globals.css` に `--color-brand-contact` トークンを追加し、`bg-brand-contact` で参照する。電話発信用 `Consult` のアイコン背景・電話番号テキストにも同色を使用
+
+### ブランチ運用の自動化
+
+- `.claude/hooks/branch-guard.sh` を新設し、`develop` / `prod` / `main` での `Edit` / `Write` を PreToolUse で `exit 2` ブロック
+- `.claude/settings.json` の `PreToolUse: Write|Edit` matcher 先頭に登録
+
 ## 参考リンク
 
 - shadcn/ui: <https://ui.shadcn.com/>
