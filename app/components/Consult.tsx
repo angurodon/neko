@@ -1,34 +1,42 @@
-import Image from "next/image";
+import { Phone } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Consult() {
   return (
-    <div className="min-h-[40vh] bg-[#f5f7fa] p-5">
-      <div className="bg-[#f5f7fa]">
-        <h2 className="mt-5 mb-0 ml-[10%] text-2xl font-bold text-[#5fc061]">
+    <section className="bg-muted px-5 py-16 md:py-20">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="mb-8 text-2xl font-bold text-brand-success md:text-3xl">
           無料相談はこちらから
         </h2>
+        <Card className="overflow-hidden">
+          <CardContent className="px-0">
+            <a
+              href="tel:03-3960-3311"
+              className="group flex flex-col items-center justify-center gap-4 px-6 py-10 text-center md:flex-row md:gap-8 md:py-12"
+            >
+              <span className="relative flex size-20 items-center justify-center md:size-24">
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-full bg-[#5fc061]/15"
+                />
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-full bg-[#5fc061]/40 opacity-0 group-hover:animate-ping"
+                />
+                <Phone className="relative size-8 text-[#5fc061] group-hover:animate-[ring_0.6s_ease-in-out_infinite] md:size-10" />
+              </span>
+              <span className="flex flex-col items-center md:items-start">
+                <span className="text-sm font-medium text-muted-foreground">
+                  お電話でのお問い合わせ
+                </span>
+                <span className="text-3xl font-bold tracking-wide text-foreground md:text-4xl">
+                  03-3960-3311
+                </span>
+              </span>
+            </a>
+          </CardContent>
+        </Card>
       </div>
-      <div className="flex min-h-[20vh] flex-col items-center justify-center bg-[#f5f7fa] text-center text-gray-800">
-        <a
-          href="tel:03-3960-3311"
-          className="group relative mt-12 flex items-center justify-center overflow-hidden rounded-xl border-2 border-[#A2E699] bg-white px-5 py-4 text-gray-800 shadow-md transition-colors hover:bg-[#58cf49]"
-        >
-          <span className="relative z-10 mr-4 flex items-center">
-            <Image
-              src="/images/phone.png"
-              alt="電話アイコン"
-              width={112}
-              height={112}
-              className="h-16 w-16 object-contain md:h-28 md:w-28"
-            />
-          </span>
-          <span className="relative z-10">
-            <span className="block text-2xl font-bold text-gray-800 transition-colors group-hover:text-white md:text-3xl">
-              TEL:03-3960-3311
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
+    </section>
   );
 }
