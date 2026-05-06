@@ -1,102 +1,100 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const CONTACT_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScEXuDiU9GfCsL2Q4nmK9En8xLd8UzVYR6B95K9IKwNAL6GTQ/viewform";
 
+const navLinks = [
+  { href: "/", label: "ホーム" },
+  { href: "/overview", label: "事業概要" },
+  { href: "/company", label: "会社概要" },
+] as const;
+
+const ctaClass =
+  "inline-flex h-10 items-center justify-center rounded-md bg-[#5fc061] px-5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#4cae50] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[#5fc061]/40";
+
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const closeMenu = () => setIsMenuOpen(false);
-  const toggleMenu = () => setIsMenuOpen((open) => !open);
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex h-[75px] items-center justify-between bg-white px-5 py-2.5 shadow-sm">
-      <div className="z-[1001] flex items-center">
-        <Link href="/" onClick={closeMenu} aria-label="ホームへ戻る">
-          <Image
-            src="/images/logo_side.png"
-            alt="Ic-Growth ロゴ"
-            width={160}
-            height={40}
-            priority
-            className="h-10 w-auto transition-transform duration-300 hover:scale-110"
-          />
-        </Link>
-      </div>
+    <header className="fixed inset-x-0 top-0 z-50 flex h-[75px] items-center justify-between border-b border-border bg-background/95 px-5 py-2.5 shadow-sm supports-[backdrop-filter]:bg-background/85 supports-[backdrop-filter]:backdrop-blur">
+      <Link href="/" aria-label="ホームへ戻る" className="flex items-center">
+        <Image
+          src="/images/logo_side.png"
+          alt="Ic-Growth ロゴ"
+          width={160}
+          height={40}
+          priority
+          className="h-10 w-auto transition-transform duration-300 hover:scale-110"
+        />
+      </Link>
 
-      {/* ハンバーガーアイコン (モバイル) */}
-      <button
-        type="button"
-        onClick={toggleMenu}
-        aria-label="メニューを開閉"
-        aria-expanded={isMenuOpen}
-        className="absolute right-12 z-[1002] flex flex-col gap-1 sm:hidden"
-      >
-        {isMenuOpen ? (
-          <span className="text-3xl leading-none text-gray-800">×</span>
-        ) : (
-          <>
-            <span className="block h-[3px] w-6 bg-gray-800" />
-            <span className="block h-[3px] w-6 bg-gray-800" />
-            <span className="block h-[3px] w-6 bg-gray-800" />
-          </>
-        )}
-      </button>
-
-      {/* ナビゲーション (デスクトップは inline、モバイルはサイドメニュー) */}
-      <nav
-        className={[
-          "fixed top-0 h-screen w-[250px] flex-col bg-white pt-12 shadow-[-2px_0_5px_rgba(0,0,0,0.5)] transition-[right] duration-300",
-          isMenuOpen ? "right-[-50px]" : "right-[-100%]",
-          "sm:static sm:flex sm:h-auto sm:w-auto sm:flex-row sm:items-center sm:bg-transparent sm:pt-0 sm:shadow-none",
-          "flex",
-        ].join(" ")}
-      >
-        <ul className="m-0 flex list-none flex-col p-0 text-center sm:flex-row sm:mr-5">
-          <li className="my-5 sm:mx-5 sm:my-0">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="text-lg font-bold text-gray-800"
-            >
-              ホーム
-            </Link>
-          </li>
-          <li className="my-5 sm:mx-5 sm:my-0">
-            <Link
-              href="/overview"
-              onClick={closeMenu}
-              className="text-lg font-bold text-gray-800"
-            >
-              事業概要
-            </Link>
-          </li>
-          <li className="my-5 sm:mx-5 sm:my-0">
-            <Link
-              href="/company"
-              onClick={closeMenu}
-              className="text-lg font-bold text-gray-800"
-            >
-              会社概要
-            </Link>
-          </li>
+      <nav className="hidden items-center gap-8 sm:flex">
+        <ul className="flex items-center gap-6 text-base font-bold text-foreground">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <div className="mt-8 sm:mt-0">
-          <a
-            href={CONTACT_FORM_URL}
-            onClick={closeMenu}
-            className="rounded-md bg-green-600 px-5 py-2.5 text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            お問い合わせ
-          </a>
-        </div>
+        <a
+          href={CONTACT_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={ctaClass}
+        >
+          お問い合わせ
+        </a>
       </nav>
+
+      <Sheet>
+        <SheetTrigger
+          aria-label="メニューを開閉"
+          className="inline-flex size-10 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted sm:hidden"
+        >
+          <Menu className="size-6" />
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[280px] sm:max-w-sm">
+          <SheetTitle className="sr-only">メニュー</SheetTitle>
+          <nav className="flex h-full flex-col gap-8 px-6 pt-12">
+            <ul className="flex flex-col gap-1 text-base font-bold text-foreground">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <SheetClose
+                    render={<Link href={link.href} />}
+                    className="block rounded-md px-2 py-3 text-left transition-colors hover:bg-muted hover:text-primary"
+                  >
+                    {link.label}
+                  </SheetClose>
+                </li>
+              ))}
+            </ul>
+            <SheetClose
+              render={
+                <a
+                  href={CONTACT_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+              className={ctaClass}
+            >
+              お問い合わせ
+            </SheetClose>
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   );
 }
