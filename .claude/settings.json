@@ -1,0 +1,152 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Bash(npm install)",
+      "Bash(npm ci)",
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint -- --fix)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run start)",
+      "Bash(npx eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx react-doctor:*)",
+      "Bash(node:*)",
+      "Bash(git status)",
+      "Bash(git status -s)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git pull --ff-only:*)",
+      "Bash(git add:*)",
+      "Bash(git restore --staged:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git push origin:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(ls:*)",
+      "Bash(pwd)",
+      "Bash(which:*)",
+      "Bash(mkdir -p:*)",
+      "Bash(chmod +x:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(rm -r:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force-with-lease:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fd:*)",
+      "Bash(git clean -fdx:*)",
+      "Bash(npm publish:*)",
+      "Bash(aws:* s3 rb:*)",
+      "Bash(aws:* s3 rm:* --recursive:*)",
+      "Bash(aws:* cloudfront delete-distribution:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/pre-edit-guard.sh",
+            "timeout": 5,
+            "statusMessage": "自動生成・ビルド成果物チェック中..."
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/config-protection.sh",
+            "timeout": 5,
+            "statusMessage": "設定ファイル保護チェック中..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/block-no-verify.sh",
+            "timeout": 5,
+            "statusMessage": "--no-verify チェック中..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git commit*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/secret-detection.sh",
+            "timeout": 15,
+            "statusMessage": "シークレット検出中..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit-lint-fix.sh",
+            "timeout": 30,
+            "statusMessage": "ESLint auto-fix..."
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/post-edit-typecheck.sh",
+            "timeout": 60,
+            "statusMessage": "TypeScript 型チェック中..."
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/console-warn.sh",
+            "timeout": 5,
+            "statusMessage": "console.log チェック中..."
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/react-doctor-reminder.sh",
+            "timeout": 5,
+            "statusMessage": "React Doctor リマインド中..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/stop-react-doctor.sh",
+            "timeout": 90,
+            "async": true,
+            "statusMessage": "React Doctor スコア計測中..."
+          }
+        ]
+      }
+    ]
+  },
+  "language": "japanese"
+}
