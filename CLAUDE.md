@@ -12,7 +12,17 @@ npm install
 npm run dev        # http://localhost:3000
 npm run build      # next build （static export → out/）
 npm run lint
+npm run typecheck  # tsc --noEmit
 ```
+
+## Claude Code 連携
+
+- コーディング規約: `.claude/rules/typescript-nextjs.md`
+- ブランチ運用: `.claude/rules/git-workflow.md`
+- スラッシュコマンド: `/react-doctor`, `/pre-commit`, `/deploy-check`, `/branch-from-develop`
+- レビュー sub-agent: `frontend-reviewer`
+- 編集後は ESLint auto-fix / 型チェック / React Doctor リマインドが自動で走る（`.claude/hooks/`）
+- 終了時に `app/` または `components/` に変更があれば React Doctor のスコアが表示される
 
 ## デプロイ
 
