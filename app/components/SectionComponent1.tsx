@@ -5,7 +5,7 @@ export default function SectionComponent1() {
     <section className="relative overflow-hidden bg-gradient-to-b from-muted to-background px-5 py-16 md:px-10 md:py-24">
       <div className="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-center gap-12 md:flex-row">
         <div className="flex-1 space-y-6 text-center md:text-left">
-          <p className="text-sm font-semibold tracking-[0.3em] text-primary uppercase">
+          <p className="text-sm font-semibold tracking-[0.3em] text-brand-accent uppercase">
             Accounting Transformation
           </p>
           <h1 className="text-3xl leading-tight font-bold text-foreground md:text-4xl lg:text-5xl">

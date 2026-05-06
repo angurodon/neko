@@ -92,7 +92,7 @@ export default function PrivacyPage() {
         <h1 className="mb-3 text-center text-2xl font-bold text-brand-success md:text-3xl">
           個人情報保護方針について
         </h1>
-        <Separator className="mx-auto mb-8 max-w-16 bg-primary" />
+        <Separator className="mx-auto mb-8 max-w-16 bg-brand-accent" />
         <p className="mb-10 text-muted-foreground">
           株式会社Ｉｃ－Ｇｒｏｗｔｈ（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、全従業員に個人情報保護の重要性の認識と取組みを徹底させることにより、個人情報の保護を推進致します。
         </p>

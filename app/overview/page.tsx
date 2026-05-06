@@ -146,13 +146,13 @@ export default function OverviewPage() {
         >
           <div className="mx-auto max-w-4xl space-y-5">
             <div>
-              <p className="text-sm font-semibold tracking-widest text-primary uppercase">
+              <p className="text-sm font-semibold tracking-widest text-brand-accent uppercase">
                 {section.eyebrow}
               </p>
               <h2 className="mt-2 text-2xl font-bold text-brand-success md:text-3xl">
                 {section.title}
               </h2>
-              <Separator className="mt-4 max-w-16 bg-primary" />
+              <Separator className="mt-4 max-w-16 bg-brand-accent" />
             </div>
             {section.body}
           </div>
@@ -162,7 +162,7 @@ export default function OverviewPage() {
       <section id="msa-support" className="bg-muted px-5 py-14 md:px-8 md:py-20">
         <div className="mx-auto max-w-4xl space-y-5">
           <div>
-            <p className="text-sm font-semibold tracking-widest text-primary uppercase">
+            <p className="text-sm font-semibold tracking-widest text-brand-accent uppercase">
               Service 03
             </p>
             <h2 className="mt-2 text-2xl font-bold text-brand-success md:text-3xl">
@@ -171,7 +171,7 @@ export default function OverviewPage() {
             <h3 className="mt-2 text-lg font-semibold text-brand-success">
               MAS（経営アドバイザリーサービス）
             </h3>
-            <Separator className="mt-4 max-w-16 bg-primary" />
+            <Separator className="mt-4 max-w-16 bg-brand-accent" />
           </div>
           <p className="leading-loose text-muted-foreground">
             経営アドバイザリーサービスは、企業や組織にとって非常に重要な役割を果たすものです。
