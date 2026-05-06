@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+
+const zenKaku = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["500", "700", "900"],
+  variable: "--font-zen-kaku",
+  display: "swap",
+});
 
 const SITE_NAME = "Ic-Growth";
 const SITE_URL = "https://www.ic-gr.net";
@@ -37,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={zenKaku.variable}>
       <body className="min-h-screen flex flex-col">
         <ScrollToTop />
         <Header />
