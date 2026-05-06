@@ -19,7 +19,7 @@ const navLinks = [
 ] as const;
 
 const ctaClass =
-  "inline-flex h-10 items-center justify-center rounded-md bg-[#5fc061] px-5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#4cae50] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[#5fc061]/40";
+  "inline-flex h-10 items-center justify-center rounded-md bg-brand-contact px-5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#4cae50] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-contact/40";
 
 export default function Header() {
   return (
