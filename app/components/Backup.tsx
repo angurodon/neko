@@ -5,35 +5,43 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const cards = [
   {
-    href: "/overview#system-support",
-    src: "/images/backup_system.png",
-    alt: "経理システムの導入支援",
-    title: "経理システムの導入支援",
-  },
-  {
     href: "/overview#business-support",
     src: "/images/backup_ec.png",
     alt: "経理支援アイコン",
     title: "経理支援",
+    number: "01",
+  },
+  {
+    href: "/overview#system-support",
+    src: "/images/backup_system.png",
+    alt: "経理システム導入支援アイコン",
+    title: "経理システム導入支援",
+    number: "02",
   },
   {
     href: "/overview#msa-support",
     src: "/images/MAS.png",
-    alt: "MAS",
+    alt: "MAS アイコン",
     title: "経営アドバイザリーサービス",
+    number: "03",
   },
 ] as const;
 
 export default function Backup() {
   return (
     <section className="bg-background px-5 py-14 md:py-20">
-      <div className="mx-auto max-w-6xl text-center">
-        <h2 className="mb-3 text-3xl font-bold tracking-wide text-brand-success md:text-4xl">
-          事 業 概 要
-        </h2>
-        <p className="mb-10 text-base text-muted-foreground md:text-lg">
-          我々は下記サービスを導入支援いたします
-        </p>
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center">
+          <p className="text-sm font-semibold tracking-[0.3em] text-brand-accent uppercase">
+            Our Services
+          </p>
+          <h2 className="mt-3 mb-3 text-3xl font-bold tracking-wide text-brand-success md:text-4xl">
+            事 業 概 要
+          </h2>
+          <p className="mb-10 text-base text-muted-foreground md:text-lg">
+            Ic-Growth が提供する 3 つのサービス
+          </p>
+        </div>
         <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           {cards.map((card) => (
             <Link
@@ -42,22 +50,25 @@ export default function Backup() {
               className="group block focus-visible:outline-none"
             >
               <Card className="h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-xl group-focus-visible:ring-3 group-focus-visible:ring-primary/40">
-                <CardHeader className="items-center pt-2">
-                  <div className="flex justify-center">
+                <CardHeader className="pt-6">
+                  <div className="flex flex-col items-center gap-3">
                     <Image
                       src={card.src}
                       alt={card.alt}
                       width={100}
                       height={100}
-                      className="h-24 w-24 object-contain"
+                      className="h-20 w-20 object-contain md:h-24 md:w-24"
                     />
+                    <span className="text-xs font-semibold tracking-widest text-brand-accent uppercase">
+                      Service {card.number}
+                    </span>
                   </div>
                 </CardHeader>
-                <CardContent className="pb-6">
-                  <CardTitle className="text-lg text-foreground md:text-xl">
+                <CardContent className="pb-6 text-center">
+                  <CardTitle className="mb-3 text-base font-bold text-foreground md:text-lg">
                     {card.title}
                   </CardTitle>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm text-primary">
+                  <span className="inline-flex items-center gap-1 text-sm text-primary">
                     詳しく見る
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   </span>

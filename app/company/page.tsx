@@ -264,7 +264,7 @@ export default function CompanyPage() {
                 href={CONTACT_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-md bg-brand-contact px-6 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#4cae50]"
               >
                 お問い合わせフォーム
                 <ArrowRight className="size-4" />
