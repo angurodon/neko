@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@/components/ui/table";
 
 export const metadata: Metadata = {
   title: "会社概要",
@@ -11,7 +18,9 @@ const rows: { label: string; content: React.ReactNode }[] = [
     label: "会社名",
     content: (
       <>
-        <span className="block text-sm text-gray-500">アイシイグロウス</span>
+        <span className="block text-xs text-muted-foreground">
+          アイシイグロウス
+        </span>
         株式会社 Ｉｃ－Ｇｒｏｗｔｈ
       </>
     ),
@@ -21,7 +30,7 @@ const rows: { label: string; content: React.ReactNode }[] = [
     label: "住所",
     content: (
       <>
-        <strong>本社:</strong>
+        <strong className="text-foreground">本社:</strong>
         <br />
         〒174-0056
         <br />
@@ -51,7 +60,7 @@ const rows: { label: string; content: React.ReactNode }[] = [
     label: "弊社サービス",
     content: (
       <>
-        <strong>【経理システム導入支援】</strong>
+        <strong className="text-foreground">【経理システム導入支援】</strong>
         <br />
         ・勤怠管理システム導入支援
         <br />
@@ -68,7 +77,7 @@ const rows: { label: string; content: React.ReactNode }[] = [
         ・証憑データ化システム導入支援
         <br />
         <br />
-        <strong>【経理支援】</strong>
+        <strong className="text-foreground">【経理支援】</strong>
         <br />
         ・会計データ作成業務
         <br />
@@ -81,7 +90,7 @@ const rows: { label: string; content: React.ReactNode }[] = [
         ・給与計算業務
         <br />
         <br />
-        <strong>【経営支援】</strong>
+        <strong className="text-foreground">【経営支援】</strong>
         <br />
         ・連絡ツール導入支援
         <br />
@@ -90,7 +99,7 @@ const rows: { label: string; content: React.ReactNode }[] = [
         ・MAS（経営アドバイザリーサービス）
         <br />
         <br />
-        <strong>【その他】</strong>
+        <strong className="text-foreground">【その他】</strong>
         <br />
         ・生命保険業務
         <br />
@@ -102,24 +111,33 @@ const rows: { label: string; content: React.ReactNode }[] = [
 
 export default function CompanyPage() {
   return (
-    <div className="mx-auto max-w-4xl px-5 py-12">
-      <h1 className="mb-8 text-center text-3xl font-bold text-[#215126] md:text-4xl">
-        会 社 概 要
-      </h1>
-      <table className="w-full border-collapse text-left">
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.label} className="border-b border-gray-200 align-top">
-              <th className="w-32 bg-[#f5f7fa] px-4 py-4 font-bold text-gray-800 md:w-40">
-                {row.label}
-              </th>
-              <td className="px-4 py-4 leading-loose text-gray-800">
-                {row.content}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="bg-gradient-to-b from-muted to-background">
+      <div className="mx-auto max-w-4xl px-5 py-14 md:py-20">
+        <h1 className="mb-10 text-center text-3xl font-bold tracking-wide text-brand-success md:text-4xl">
+          会 社 概 要
+        </h1>
+        <Card className="overflow-hidden">
+          <CardContent className="px-0">
+            <Table className="text-base">
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.label}
+                    className="hover:bg-transparent has-aria-expanded:bg-transparent"
+                  >
+                    <TableCell className="w-32 bg-muted/60 px-5 py-5 align-top font-bold whitespace-normal text-foreground md:w-48">
+                      {row.label}
+                    </TableCell>
+                    <TableCell className="px-5 py-5 align-top leading-loose whitespace-normal text-foreground">
+                      {row.content}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
