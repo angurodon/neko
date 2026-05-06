@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
+import type { ComponentType } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Calculator,
+  Cpu,
+  Phone,
+  TrendingUp,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
@@ -11,122 +17,117 @@ export const metadata: Metadata = {
     "Ic-Growth が提供する経理システムの導入支援、経理支援、経営アドバイザリーサービスについてご紹介します。",
 };
 
-const cards = [
-  {
-    href: "#system-support",
-    src: "/images/backup_system.png",
-    alt: "経理システムの導入支援",
-    title: "経理システムの導入支援",
-  },
-  {
-    href: "#business-support",
-    src: "/images/backup_ec.png",
-    alt: "経理支援アイコン",
-    title: "経理支援",
-  },
-  {
-    href: "#msa-support",
-    src: "/images/MAS.png",
-    alt: "MAS",
-    title: "経営アドバイザリーサービス",
-  },
-] as const;
+const CONTACT_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScEXuDiU9GfCsL2Q4nmK9En8xLd8UzVYR6B95K9IKwNAL6GTQ/viewform";
 
-const sections = [
+type IconComponent = ComponentType<{ className?: string }>;
+
+type Service = {
+  id: string;
+  number: string;
+  icon: IconComponent;
+  title: string;
+  lede: string;
+  features: string[];
+  extras?: { number: string; title: string; body: string }[];
+};
+
+const services: Service[] = [
   {
     id: "business-support",
-    eyebrow: "Service 01",
+    number: "01",
+    icon: Calculator,
     title: "経理支援",
-    bg: "bg-muted",
-    body: (
-      <>
-        <p className="leading-loose text-muted-foreground">
-          経理の人材不足が中小企業経営に大きな課題をもたらしています。新しいシステムの導入後の不慣れな時期や経理担当者の一時的な不在時に備え、様々なサービスをご用意しております。
-        </p>
-        <ul className="list-disc space-y-3 pl-6 leading-loose text-muted-foreground">
-          <li>
-            新しいシステムを正しく活用できるスキルと知識を習得していく過程をサポートいたします。
-          </li>
-          <li>
-            AIの活用には数か月分のデータの登録が必要です。
-            <br />
-            初期段階は弊社にて会計データの作成をお手伝い、その後正しくAIを活用できるようにサポートいたします。
-          </li>
-          <li>
-            経理自動化後も経理業務には時間と手間を要します。
-            <br />
-            経理担当者が戦略的な業務に集中できるよう弊社にて会計データ作成を継続することも可能です。
-          </li>
-          <li>請求書の発行、支払請求書の整理などのお手伝いをいたします。</li>
-          <li>給与計算業務のお手伝いをいたします。</li>
-        </ul>
-      </>
-    ),
+    lede: "経理人材の不足や担当者の不在に対して、スキル習得から実務運用まで伴走支援します。",
+    features: [
+      "新しいシステムを正しく活用するスキルと知識の習得をサポート",
+      "AI 活用に必要な初期データを弊社で作成、運用に乗せるまで伴走",
+      "自動化後も会計データ作成を継続し、経理担当者が戦略業務に集中できる環境を維持",
+      "請求書発行・支払請求書整理の代行",
+      "給与計算業務の代行",
+    ],
   },
   {
     id: "system-support",
-    eyebrow: "Service 02",
-    title: "経理システム導入支援（経理の自動化）",
-    bg: "bg-background",
-    body: (
-      <>
-        <p className="leading-loose text-muted-foreground">
-          <strong className="text-foreground">経理の自動化</strong>
-          は、多くの企業や組織にとって欠かせない取り組みとなっています。経理や会計の状況が健全であること、すなわち
-          <strong className="text-foreground">正確性</strong>や
-          <strong className="text-foreground">迅速性</strong>、そして
-          <strong className="text-foreground">透明性</strong>
-          を備えていることは、経営において非常に重要な要素です。
-        </p>
-        <ul className="list-disc space-y-3 pl-6 leading-loose text-muted-foreground">
-          <li>
-            従来の手作業による経理業務は、多くの時間と労力を必要とします。
-          </li>
-          <li>人間による手作業は、エラーやミスの発生が避けられません。</li>
-          <li>
-            意思決定プロセスの改善や戦略的な判断のため迅速な会計データを共有できます。
-          </li>
-          <li>税法や会計基準は頻繁に変更されます。</li>
-          <li>レポートや分析データを自動的に生成できます。</li>
-        </ul>
-      </>
-    ),
+    number: "02",
+    icon: Cpu,
+    title: "経理システム導入支援",
+    lede: "「経理の自動化」で、正確性・迅速性・透明性を備えた会計基盤を構築します。",
+    features: [
+      "手作業に頼らない、時間と労力のかからない経理業務の実現",
+      "人為的なエラー・ミスを構造的に削減",
+      "意思決定に必要な会計データをリアルタイムに共有",
+      "税法や会計基準の変更にシステム側で追従",
+      "レポート・分析データの自動生成",
+    ],
   },
-] as const;
+  {
+    id: "msa-support",
+    number: "03",
+    icon: TrendingUp,
+    title: "経営アドバイザリーサービス（MAS）",
+    lede: "正確かつ迅速・明瞭な会計を前提に、経営者の戦略的意思決定を伴走支援します。",
+    features: [
+      "市場動向・リスク・成長機会まで含む戦略立案の壁打ち",
+      "P/L・B/S の将来像から資源最適化と事業戦略を逆算",
+      "新規投資・組織再編・新規事業の資金計画",
+      "短中長期のキャッシュフロー管理を財務会計・管理会計の両面から助言",
+      "戦略意思決定とキャッシュフロー管理の継続的フィードバック",
+    ],
+    extras: [
+      {
+        number: "01",
+        title: "戦略的意思決定のサポート",
+        body: "経営陣に会計データを共有しながら、市場動向・リスク・成長機会も踏まえた戦略立案をともに行い、企業の競争力と成長を支えます。P/L・B/S の将来像を必要に応じて細分化し、事業の拡大・縮小・統合・連携につながるコーチングを提供します。",
+      },
+      {
+        number: "02",
+        title: "資金調達と運用の管理サポート",
+        body: "新規設備投資・組織再編・新規プロジェクトの資金計画から、通常運転資金と短中長期にわたるキャッシュフロー管理まで、財務会計・管理会計の両面から戦略的にアドバイスします。戦略的意思決定とフィードバックし合うことで、相互に重要な影響を及ぼす関係を築きます。",
+      },
+    ],
+  },
+];
 
 export default function OverviewPage() {
   return (
     <div>
-      <section className="bg-gradient-to-b from-muted to-background px-5 py-12 md:py-16">
+      {/* Hero */}
+      <section className="bg-gradient-to-b from-muted to-background px-5 pt-12 pb-12 md:pt-16 md:pb-16">
         <div className="mx-auto max-w-6xl">
-          <h1 className="mb-10 text-center text-3xl font-bold tracking-wide text-brand-success md:text-4xl">
+          <p className="text-center text-sm font-semibold tracking-[0.3em] text-brand-accent uppercase">
+            Our Services
+          </p>
+          <h1 className="mt-3 mb-6 text-center text-3xl font-bold tracking-wide text-brand-success md:text-4xl">
             事 業 概 要
           </h1>
+          <p className="mx-auto mb-12 max-w-3xl text-center leading-loose text-muted-foreground md:text-lg">
+            会計をエネルギーに変える 3 本柱で、企業の経理基盤と意思決定を支えます。
+          </p>
 
           <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-            {cards.map((card) => (
+            {services.map((service) => (
               <Link
-                key={card.href}
-                href={card.href}
+                key={service.id}
+                href={`#${service.id}`}
                 className="group block focus-visible:outline-none"
               >
                 <Card className="h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-xl group-focus-visible:ring-3 group-focus-visible:ring-primary/40">
-                  <CardHeader className="items-center pt-2">
-                    <div className="flex justify-center">
-                      <Image
-                        src={card.src}
-                        alt={card.alt}
-                        width={100}
-                        height={100}
-                        className="h-24 w-24 object-contain"
-                      />
+                  <CardHeader className="pt-5">
+                    <div className="flex items-center gap-3">
+                      <span className="flex size-12 items-center justify-center rounded-md bg-primary/10 text-primary">
+                        <service.icon className="size-6" />
+                      </span>
+                      <span className="text-xs font-semibold tracking-widest text-brand-accent uppercase">
+                        Service {service.number}
+                      </span>
                     </div>
                   </CardHeader>
-                  <CardContent className="pb-6 text-center">
-                    <CardTitle className="text-lg text-foreground md:text-xl">
-                      {card.title}
+                  <CardContent className="pb-6">
+                    <CardTitle className="mb-3 text-base font-bold text-foreground md:text-lg">
+                      {service.title}
                     </CardTitle>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm text-primary">
+                    <span className="inline-flex items-center gap-1 text-sm text-primary">
                       詳しく見る
                       <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                     </span>
@@ -138,85 +139,99 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {sections.map((section) => (
+      {/* Service detail blocks */}
+      {services.map((service, idx) => (
         <section
-          key={section.id}
-          id={section.id}
-          className={`${section.bg} px-5 py-14 md:px-8 md:py-20`}
+          key={service.id}
+          id={service.id}
+          className={`scroll-mt-24 px-5 py-16 md:px-8 md:py-20 ${idx % 2 === 0 ? "bg-muted" : "bg-background"}`}
         >
-          <div className="mx-auto max-w-4xl space-y-5">
+          <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[280px_1fr] md:gap-16">
             <div>
-              <p className="text-sm font-semibold tracking-widest text-brand-accent uppercase">
-                {section.eyebrow}
-              </p>
-              <h2 className="mt-2 text-2xl font-bold text-brand-success md:text-3xl">
-                {section.title}
+              <div className="flex items-center gap-3">
+                <span className="flex size-10 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <service.icon className="size-5" />
+                </span>
+                <span className="text-xs font-semibold tracking-widest text-brand-accent uppercase">
+                  Service {service.number}
+                </span>
+              </div>
+              <h2 className="mt-4 text-2xl font-bold text-brand-success md:text-3xl">
+                {service.title}
               </h2>
-              <Separator className="mt-4 max-w-16 bg-brand-accent" />
+              <Separator className="mt-4 max-w-12 bg-brand-accent" />
+              <p className="mt-6 leading-loose text-muted-foreground">
+                {service.lede}
+              </p>
             </div>
-            {section.body}
+            <div>
+              <ul className="space-y-3">
+                {service.features.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 leading-relaxed text-foreground"
+                  >
+                    <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand-accent" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {service.extras && (
+                <div className="mt-10 grid gap-5 md:grid-cols-2">
+                  {service.extras.map((extra) => (
+                    <Card key={extra.number}>
+                      <CardHeader className="pt-5">
+                        <span className="text-xs font-semibold tracking-widest text-brand-accent uppercase">
+                          Case {extra.number}
+                        </span>
+                        <CardTitle className="text-base leading-snug font-bold text-foreground md:text-lg">
+                          {extra.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="pb-6">
+                        <p className="leading-loose text-muted-foreground">
+                          {extra.body}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </section>
       ))}
 
-      <section id="msa-support" className="bg-muted px-5 py-14 md:px-8 md:py-20">
-        <div className="mx-auto max-w-4xl space-y-5">
-          <div>
-            <p className="text-sm font-semibold tracking-widest text-brand-accent uppercase">
-              Service 03
-            </p>
-            <h2 className="mt-2 text-2xl font-bold text-brand-success md:text-3xl">
-              経営支援
-            </h2>
-            <h3 className="mt-2 text-lg font-semibold text-brand-success">
-              MAS（経営アドバイザリーサービス）
-            </h3>
-            <Separator className="mt-4 max-w-16 bg-brand-accent" />
-          </div>
-          <p className="leading-loose text-muted-foreground">
-            経営アドバイザリーサービスは、企業や組織にとって非常に重要な役割を果たすものです。
-            <br />
-            <br />
-            ただし経営者が戦略的意思決定をするヒントになる鍵は、経理、会計のコンディションが優良であること、すなわち経理処理が正確かつスピーディであり、さらに明瞭であることが前提条件となります。
-            <br />
-            <br />
-            具体的なサービス内容は各企業、経営者に応じて多種多様なものとなりますが、
-            <br />
-            次の2項目が代表的な弊社の関与事例となっております。
+      {/* CTA */}
+      <section className="bg-background px-5 py-16 md:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-semibold tracking-[0.3em] text-brand-accent uppercase">
+            Contact
           </p>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg text-foreground">
-                  戦略的意思決定のサポート
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 pb-6 leading-loose text-muted-foreground">
-                <p>
-                  企業の経営陣に対して、会計データを共有しながら戦略的な意思決定を促します。
-                  さらに会計データに留まらず市場動向、情勢、リスク、成長機会などの情報も共有しながら、最適な戦略を一緒に考え企業の競争力を維持し、成長戦略を展開するのに役立てます。
-                </p>
-                <p>
-                  また損益計算書、貸借対照表の将来像を経営戦略に落とし込んでいくイメージでデータを必要に応じて細分化、経営資源を最適に活用、加えて事業の拡大・縮小・統合・連携等に繋がるようにコーチングして参ります。
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg text-foreground">
-                  資金調達と運用に関する管理サポート
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 pb-6 leading-loose text-muted-foreground">
-                <p>
-                  新規設備投資、法人の組織再編、新しいプロジェクトに関する資金計画だけでなく、通常の運転資金と短中長期にわたるキャッシュフロー管理を財務会計、管理会計の両面から戦略的なアドバイスを提供します。
-                </p>
-                <p>
-                  このキャッシュフロー管理と前者の戦略的意思決定とはお互いにフィードバックすることを通して重要な影響を及ぼしあう関係性を持ちます。
-                </p>
-              </CardContent>
-            </Card>
+          <h2 className="mt-3 text-2xl font-bold text-brand-success md:text-3xl">
+            ご相談はこちらから
+          </h2>
+          <p className="mt-4 leading-loose text-muted-foreground">
+            まずはお気軽にお問い合わせください。
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={CONTACT_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            >
+              お問い合わせフォーム
+              <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="tel:03-3960-3311"
+              className="inline-flex items-center gap-2 text-lg font-bold text-foreground transition-colors hover:text-primary"
+            >
+              <Phone className="size-5 text-[#5fc061]" />
+              03-3960-3311
+            </a>
           </div>
         </div>
       </section>
