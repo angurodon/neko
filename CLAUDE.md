@@ -59,9 +59,19 @@ aws --profile ic-gr cloudfront create-invalidation \
 
 `.com` ドメイン側の CloudFront には今回のデプロイでは invalidation を打っていないため、`*.ic-gr.com` でも即時反映したい場合は手動で `--distribution-id E3CUYP7CXV3V06` の invalidation を実行する。
 
-### SPA 直リンク問題は解消済み
+### サブパス直リンク / リロード対応
 
-旧 CRA では CloudFront に Custom Error Response 未設定だったため `/overview` などのリロードで 403 を返していたが、Next.js の static export + `trailingSlash: true` で各ルートが `out/overview/index.html` として生成されるため、ハードリロードでも 200 が返る。
+`trailingSlash: true` で `out/<route>/index.html` は生成されるが、CloudFront の `DefaultRootObject` はバケットルートにしか効かないため、それだけでは `/company/` などへのリロードで `403 AccessDenied` が返る (S3 REST origin + OAC 構成のため、サブパスのキーが見つからない → 非公開バケットなので 403)。
+
+これを解消するため CloudFront Function `ic-gr-url-rewrite` を viewer-request として紐付けている。コード本体は `infra/cloudfront/url-rewrite.js`、デプロイ手順は同ディレクトリ `README.md` を参照。
+
+```
+/company/  →  /company/index.html
+/company   →  /company/index.html
+/foo.ext   →  そのまま (拡張子があるリクエストはリライトしない)
+```
+
+現在 `.net` (`EHFD30ZL5XZ0U`) のみ紐付け済み。`.com` (`E3CUYP7CXV3V06`) も同じ症状になるため、必要なら同じ関数 (`arn:aws:cloudfront::058264181659:function/ic-gr-url-rewrite`) を viewer-request として紐付ければよい。
 
 ## ディレクトリ構成
 
